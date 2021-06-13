@@ -10,7 +10,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import {AngularFireAuthModule } from '@angular/fire/auth';
-
+import { HeaderComponent } from './componet/header/header.component';
 
 
 
@@ -19,7 +19,9 @@ import {AngularFireAuthModule } from '@angular/fire/auth';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    HeaderComponent,
+
   ],
   imports: [
     BrowserModule,
