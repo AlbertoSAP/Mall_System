@@ -13,6 +13,7 @@ import {AngularFireAuthModule } from '@angular/fire/auth';
 import { HeaderComponent } from './componet/header/header.component';
 import { NavbarComponent } from './componet/navbar/navbar.component';
 import { RoutingModule } from './app-routing.module';
+
 import { FormsModule } from '@angular/forms';
 
 
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     RegisterComponent,
     NavbarComponent,
     HeaderComponent,
+    
 
   ],
   imports: [
