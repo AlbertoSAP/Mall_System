@@ -13,7 +13,7 @@ import {AngularFireAuthModule } from '@angular/fire/auth';
 import { HeaderComponent } from './componet/header/header.component';
 import { NavbarComponent } from './componet/navbar/navbar.component';
 import { RoutingModule } from './app-routing.module';
-
+import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 
 
@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     RegisterComponent,
     NavbarComponent,
     HeaderComponent,
+  
     
 
   ],
@@ -34,7 +35,9 @@ import { FormsModule } from '@angular/forms';
     AngularFireAuthModule,
     AngularFirestoreModule,
     RoutingModule,
-    FormsModule
+    FormsModule,
+    MatSliderModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
