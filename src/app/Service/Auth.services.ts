@@ -43,7 +43,7 @@ export class AuthService {
     }
 
     register(creden: Credenciales) {
-
+console.log("register");
         firebase.auth().createUserWithEmailAndPassword(creden.email, creden.password)
             .then((userCredential) => {
                 // Signed in
