@@ -15,6 +15,7 @@ import { NavbarComponent } from './componet/navbar/navbar.component';
 import { RoutingModule } from './app-routing.module';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     RoutingModule,
     FormsModule,
     MatSliderModule,
+    BrowserAnimationsModule,
     
   ],
   providers: [],
