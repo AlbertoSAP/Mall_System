@@ -4,13 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { RegisterComponent } from './Auth/register/register.component';
-import { NavbarComponent } from './Shared/navbar/navbar.component';
+
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import {AngularFireAuthModule } from '@angular/fire/auth';
 import { HeaderComponent } from './componet/header/header.component';
+import { NavbarComponent } from './componet/navbar/navbar.component';
+import { RoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -27,7 +30,9 @@ import { HeaderComponent } from './componet/header/header.component';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    RoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
