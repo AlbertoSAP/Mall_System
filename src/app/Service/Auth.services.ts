@@ -6,6 +6,7 @@ import firebase from 'firebase/app';
 import { Credenciales } from '../interface/loging';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationComponent } from '../componet/notification/notification.component';
+import { NotificationService } from './notification.service';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthService {
     usuario: any = {};
     constructor(private firestore: AngularFirestore,
         public auth: AngularFireAuth ,
-         public mathdialogo: MatDialog
+         public mathdialogo: MatDialog,
+         public notif : NotificationService
          ) {
 
         this.auth.authState.subscribe(user => {
@@ -57,7 +59,11 @@ console.log("register");
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                
+// se manda el error al servicio
+this.notif.notific(errorMessage, errorCode)
+// 
+
+                this.MuestraError();
             });
     }
 
