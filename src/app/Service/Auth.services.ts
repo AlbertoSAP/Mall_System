@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import { Credenciales } from '../interface/loging';
+import { MatDialog } from '@angular/material/dialog';
+import { NotificationComponent } from '../componet/notification/notification.component';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +13,9 @@ import { Credenciales } from '../interface/loging';
 export class AuthService {
     usuario: any = {};
     constructor(private firestore: AngularFirestore,
-        public auth: AngularFireAuth) {
+        public auth: AngularFireAuth ,
+         public mathdialogo: MatDialog
+         ) {
 
         this.auth.authState.subscribe(user => {
 
@@ -39,6 +43,7 @@ export class AuthService {
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
+                this.MuestraError();
             });
     }
 
@@ -52,8 +57,16 @@ console.log("register");
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
+                
             });
     }
 
+MuestraError(){
+    this.mathdialogo.open(NotificationComponent,{
+        data:{},
+     minWidth:250,
+     maxWidth: 300,
+    });
+}
 
 }
