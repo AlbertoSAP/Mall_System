@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class NotificationService {
+
 public eror2: any = {
 
   smg: '',
@@ -23,6 +24,4 @@ public eror2: any = {
  return this.eror2;
   }
     
-    
-  
 }

@@ -17,6 +17,7 @@ export class AuthService {
         public auth: AngularFireAuth ,
          public mathdialogo: MatDialog,
          public noti: NotificationService,
+
          ) {
 
         this.auth.authState.subscribe(user => {
@@ -62,7 +63,11 @@ console.log("register");
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                
+// se manda el error al servicio
+this.noti.eror(errorMessage, errorCode)
+// 
+
+                this.MuestraError();
             });
     }
 

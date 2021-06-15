@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AuthService } from 'src/app/Service/Auth.services';
 import { NotificationService } from '../../Service/notification.service';
+
 
 @Component({
   selector: 'app-notification',
@@ -8,6 +10,7 @@ import { NotificationService } from '../../Service/notification.service';
   styleUrls: ['./notification.component.css']
 })
 export class NotificationComponent implements OnInit {
+
  dialogo:string = "";
  codigo:string="";
   constructor(private auth: AuthService,
