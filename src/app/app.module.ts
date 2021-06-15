@@ -16,6 +16,8 @@ import { RoutingModule } from './app-routing.module';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotificationComponent } from './componet/notification/notification.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -26,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegisterComponent,
     NavbarComponent,
     HeaderComponent,
+    NotificationComponent,
   
     
 
@@ -39,6 +42,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     MatSliderModule,
     BrowserAnimationsModule,
+    MatDialogModule
     
   ],
   providers: [],
