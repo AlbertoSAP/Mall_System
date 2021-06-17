@@ -1,0 +1,34 @@
+<div class="">
+    <form>
+        <div class="form-group">
+            <label>Nombre del modulo</label>
+            <input type="text" placehoolder="Escriba el Nombre" name="nombre" [(ngModel)]="doc.nombre" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Tamaño de Modulo</label>
+            <input type="text" placehoolder="metros X2" name="tamano" [(ngModel)]="doc.tamano" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Numero de Modulo</label>
+            <input type="text" placehoolder="eje; 002" class="form-control" name="numerodemodulo" [(ngModel)]="doc.numerodemodulo">
+
+        </div>
+
+        <div class="form-group">
+            <label>Precio Modulo</label>
+            <input type="text" placehoolder="Precio" class="form-control" name="precio" [(ngModel)]="doc.precio">
+
+        </div>
+
+        <div class="form-group">
+            <label>Descripcion</label>
+            <textarea type="text" placehoolder="Escrina el Nombre" class="form-control" name="descripcion" [(ngModel)]="doc.descripcion"></textarea>
+
+        </div>
+
+        <button (click)="add()" class="btn btn-success">Add</button>
+
+    </form>
+</div>

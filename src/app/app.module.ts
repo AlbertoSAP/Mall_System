@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationComponent } from './componet/notification/notification.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ModuloComponent } from './componet/modulo/modulo.component';
 
 
 
@@ -29,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     NavbarComponent,
     HeaderComponent,
     NotificationComponent,
+    ModuloComponent,
   
     
 
@@ -42,7 +44,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     MatSliderModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    AngularFirestoreModule
     
   ],
   providers: [],
