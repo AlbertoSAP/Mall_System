@@ -16,11 +16,22 @@ public eror2: any = {
    }
 
 
-  eror( msg: string, cod: string){
+  eror( cod: string){
+   cod = cod.toLowerCase();
+    if(cod == "ok"){
 
- this.eror2.smg = msg;
- this.eror2.cod = cod;
- console.log(msg, cod,"service");
+     this.eror2.cod = cod;
+     this.eror2.smg ="Exito";
+
+    }
+
+    else{
+      this.eror2.cod = cod;
+      this.eror2.smg ="Error revise";
+    }
+
+ //console.log(msg, cod,"service");
+
  return this.eror2;
   }
     

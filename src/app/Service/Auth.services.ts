@@ -13,6 +13,7 @@ import { NotificationService } from './notification.service';
 })
 export class AuthService {
     usuario: any = {};
+    cod: string ="";
     constructor(private firestore: AngularFirestore,
         public auth: AngularFireAuth ,
          public mathdialogo: MatDialog,
@@ -41,12 +42,16 @@ export class AuthService {
             .then((userCredential) => {
                 // Signed in
                 var user = userCredential.user;
+                this.cod="ok";
+                this.noti.eror(this.cod);
+                this.MuestraError;
                 // ...
             })
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                this.noti.eror(errorMessage,errorCode);
+                this.cod= "Error", 
+                this.noti.eror(this.cod);
                 this.MuestraError();
             
                 
@@ -59,12 +64,17 @@ console.log("register");
             .then((userCredential) => {
                 // Signed in
                 var user = userCredential.user;
+                this.cod="ok";
+                this.noti.eror(this.cod);
+                this.MuestraError();
+
             })
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
 // se manda el error al servicio
-this.noti.eror(errorMessage, errorCode)
+this.cod="error";
+this.noti.eror(this.cod);
 // 
 
                 this.MuestraError();
