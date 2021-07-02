@@ -13,17 +13,38 @@ doc:Modulos={
   precio: 0,
   tamano: "",
   descripcion:"",
-  numerodemodulo:0
+  numerodemodulo:0,
+  uid:""
 
 }
-
+actualizar : boolean = false;
+agregar : boolean = true;
+id:any = "";
   constructor(private modulo: ModuloService) { }
 
   ngOnInit(): void {
+   this.doc = this.modulo.resultado;
+   console.log(this.actualizar);
+console.log(this.doc.uid);
+if(this.doc.uid == ""){
+this.actualizar = false;
+this.agregar = true;
+}else{
+  this.actualizar = true;
+  this.agregar = false;
+  
+}
+this.id = this.doc.uid; 
+
   }
 
   add(){
   this.modulo.addfile(this.doc);
  console.log(this.doc);
+  }
+
+// modificamos
+  update(){
+this.modulo.Actualizar(this.doc);
   }
 }

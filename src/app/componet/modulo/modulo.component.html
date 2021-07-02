@@ -1,4 +1,4 @@
-<div class="">
+<div class="container">
     <form>
         <div class="form-group">
             <label>Nombre del modulo</label>
@@ -28,7 +28,8 @@
 
         </div>
 
-        <button (click)="add()" class="btn btn-success">Add</button>
+        <button *ngIf="agregar" (click)="add()" class="btn btn-success">Add</button>
+        <button *ngIf="actualizar" (click)="update()" class="btn btn-warning">Modificar</button>
 
     </form>
 </div>

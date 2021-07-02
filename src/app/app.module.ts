@@ -19,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationComponent } from './componet/notification/notification.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModuloComponent } from './componet/modulo/modulo.component';
+import { ListamoduloComponent } from './componet/listamodulo/listamodulo.component';
+import {MatTableModule } from '@angular/material/table';
 
 
 
@@ -31,6 +33,7 @@ import { ModuloComponent } from './componet/modulo/modulo.component';
     HeaderComponent,
     NotificationComponent,
     ModuloComponent,
+    ListamoduloComponent,
   
     
 
@@ -45,7 +48,8 @@ import { ModuloComponent } from './componet/modulo/modulo.component';
     MatSliderModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatTableModule,
     
   ],
   providers: [],
