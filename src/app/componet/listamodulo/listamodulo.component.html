@@ -1,3 +1,33 @@
-<table mat-table [dataSource]="myDataArray">
+<table class="redondo table table-inverse">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Tamaño</th>
+            <th scope="col"># de Modulo</th>
+            <th scope="col" text="align-center">Descripcion</th>
+            <th scope="col">Opciones</th>
 
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let data of arreglo">
+            <th scope="row">{{data.nombre}}</th>
+            <th scope="row">{{data.precio}} $</th>
+            <th scope="row">{{data.tamano}}</th>
+            <th scope="row">{{data.numerodemodulo}}</th>
+            <th scope="row">{{data.descripcion}}</th>
+            <!-- <th scope="row">{{data.uid}}</th> -->
+            <th>
+                <div class="" role="group">
+                    <!-- <a class="btn btn-outline-primary" [routerLink]="[ '/modulo']">Editar</a> -->
+                    <button class="redondo btn btn-outline-primary mx-sm-1" (click)="actualizar(data.uid)">Modificar</button>
+                    <button class="redondo btn btn-outline-danger  mx-sm-1" (click)="delete(data.uid)">Borrar</button>
+                </div>
+            </th>
+
+
+        </tr>
+    </tbody>
 </table>
