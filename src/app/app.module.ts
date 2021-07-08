@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModuloComponent } from './componet/modulo/modulo.component';
 import { ListamoduloComponent } from './componet/listamodulo/listamodulo.component';
 import {MatTableModule } from '@angular/material/table';
+import { DescripcionComponent } from './componet/descripcion/descripcion.component';
 
 
 
@@ -34,6 +35,7 @@ import {MatTableModule } from '@angular/material/table';
     NotificationComponent,
     ModuloComponent,
     ListamoduloComponent,
+    DescripcionComponent,
   
     
 
