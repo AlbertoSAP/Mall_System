@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { NotificationComponent } from '../componet/notification/notification.component';
 import { Modulos } from '../interface/modulo';
 import { NotificationService } from './notification.service';
 import { MatDialog } from '@angular/material/dialog';
-import firebase from 'firebase/app';
-import { asap } from 'rxjs';
 import { Router } from '@angular/router';
 
 
@@ -43,12 +41,14 @@ export class ModuloService {
             "nombreLocal": documento.nombre,
             "precio": documento.precio,
             "descripcion": documento.descripcion,
-            "tamano": documento.tamano
+            "tamano": documento.tamano,
+            "estado": documento.estado
 
         }).then(() => {
             this.cod = 'Ok';
             this.notificacion.eror(this.cod);
             this.MuestraError();
+            this.arreglo = [];
             this.router.navigateByUrl("/lista");
         }).catch((error) => {
             this.cod = 'Error';
@@ -59,6 +59,7 @@ export class ModuloService {
     }
 
     viewModulo() {
+        this.arreglo = [];
         const dbRef = this.db.collection('modulo').ref.get().then((snapshot) => {
             console.log(snapshot.docs);
             const data = snapshot.docs;
@@ -75,6 +76,7 @@ export class ModuloService {
                 this.resultado.numerodemodulo = sacar.numeroModulo;
                 this.resultado.descripcion = sacar.descripcion;
                 this.resultado.uid = docum.id;
+                this.resultado.estado = sacar.estado;
 
                 //  console.log(this.resultado);
                 this.arreglo.push(this.resultado);
@@ -84,7 +86,8 @@ export class ModuloService {
                     precio: 0,
                     numerodemodulo: 0,
                     descripcion: "",
-                    uid: ""
+                    uid: "", 
+                    estado: false
                 };
             }
             console.log(this.arreglo, "service");
@@ -140,8 +143,8 @@ export class ModuloService {
 
     delete(id: string) {
         var Ref = this.db.collection('modulo').doc(id).delete();
-        this.arreglo = [];
-        this.viewModulo();
+      
+        // this.viewModulo();
 
 
     }
@@ -161,7 +164,8 @@ export class ModuloService {
             precio: 0,
             numerodemodulo: 0,
             descripcion: "",
-            uid: ""
+            uid: "",
+            estado:false,
         };
         const leer = this.db.collection('modulo').doc(id).get().toPromise();
         leer.then(res => {
@@ -173,6 +177,7 @@ export class ModuloService {
             this.resultado.precio = array.precio;
             this.resultado.tamano = array.tamano;
             this.resultado.descripcion = array.descripcion;
+            this.resultado.estado = array.estado;
             console.log("this.resultado", this.resultado);
             this.router.navigateByUrl("/modulo");
             return this.resultado;
@@ -193,7 +198,8 @@ export class ModuloService {
             nombreLocal: argumento.nombre,
             precio: argumento.precio,
             descripcion: argumento.descripcion,
-            tamano: argumento.tamano
+            tamano: argumento.tamano,
+            estado: argumento.estado,
         })
             .then(() => {
                 console.log("Actualizar los Datos", ActDatos);
@@ -203,8 +209,10 @@ export class ModuloService {
                     precio: 0,
                     numerodemodulo: 0,
                     descripcion: "",
-                    uid: ""
+                    uid: "",
+                    estado:false,
                 };
+                this.arreglo = [];
                 this.router.navigateByUrl("/lista");
 
             })

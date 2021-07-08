@@ -14,9 +14,11 @@ doc:Modulos={
   tamano: "",
   descripcion:"",
   numerodemodulo:0,
-  uid:""
+  uid:"", 
+  estado:false
+};
 
-}
+
 actualizar : boolean = false;
 agregar : boolean = true;
 id:any = "";
@@ -39,12 +41,23 @@ this.id = this.doc.uid;
   }
 
   add(){
-  this.modulo.addfile(this.doc);
- console.log(this.doc);
+   this.modulo.addfile(this.doc);
+
   }
 
 // modificamos
   update(){
 this.modulo.Actualizar(this.doc);
+  }
+
+  clear()
+  {
+    this.doc= {
+      nombre:"",
+      precio: 0,
+      tamano: "",
+      descripcion:"",
+      numerodemodulo:0,
+    }
   }
 }

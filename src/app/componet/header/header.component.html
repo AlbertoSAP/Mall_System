@@ -1,7 +1,7 @@
 <div class="">
     <div class="pcoded-wrapper">
         <nav class="pcoded-navbar">
-            <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+            <div class="sidebar_toggle"><a href="/"><i class="icon-close icons"></i></a></div>
             <div class="pcoded-inner-navbar main-menu">
                 <div class="">
                     <div class="main-menu-header">
@@ -32,9 +32,9 @@
                 <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
                 <ul class="pcoded-item pcoded-left-item">
                     <li class="active">
-                        <a href="index.html">
+                        <a [routerLink]="['/lista']">
                             <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                            <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                            <span class="pcoded-mtext" data-i18n="nav.dash.main">Modulos</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
@@ -46,9 +46,9 @@
                         </a>
                         <ul class="pcoded-submenu">
                             <li class=" ">
-                                <a href="accordion.html">
+                                <a [routerLink]="['/modulo']">
                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Accordion</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Agregar Modulo</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
