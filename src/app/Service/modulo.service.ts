@@ -55,6 +55,7 @@ export class ModuloService {
             this.notificacion.eror(this.cod);
             this.MuestraError();
         });
+    
 
     }
 
@@ -77,6 +78,7 @@ export class ModuloService {
                 this.resultado.descripcion = sacar.descripcion;
                 this.resultado.uid = docum.id;
                 this.resultado.estado = sacar.estado;
+                this.resultado.image = sacar.image;
 
                 //  console.log(this.resultado);
                 this.arreglo.push(this.resultado);
@@ -122,6 +124,7 @@ export class ModuloService {
                 this.resultado.tamano = a.tamano;
                 this.resultado.numerodemodulo = a.numeroModulo;
                 this.resultado.descripcion = a.descripcion;
+                this.resultado.image = a.image;
                 lectura.push(this.resultado);
                 this.resultado = {
                     nombre: "",

@@ -41,8 +41,7 @@ this.id = this.doc.uid;
   }
 
   add(){
-   this.modulo.addfile(this.doc);
-
+      this.modulo.addfile(this.doc);
   }
 
 // modificamos
