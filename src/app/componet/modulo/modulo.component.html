@@ -1,35 +1,61 @@
 <div class="container">
-    <form>
-        <div class="form-group">
-            <label>Nombre del modulo</label>
-            <input type="text" placehoolder="Escriba el Nombre" name="nombre" [(ngModel)]="doc.nombre" class="form-control">
+    <div class="container col-12 fondo card ">
+        <div class="card-header">
+            <h1 class="center-mytext">
+                Agregar Modulos
+            </h1>
+            <hr>
         </div>
 
-        <div class="form-group">
-            <label>Tamaño de Modulo</label>
-            <input type="text" placehoolder="metros X2" name="tamano" [(ngModel)]="doc.tamano" class="form-control">
+        <div class="card-body">
+
+
+            <form>
+                <!-- primera fila -->
+                <div class="form-group ">
+
+                    <label>Nombre del modulo</label>
+                    <input type="text " placehoolder="Escriba el Nombre " name="nombre " [(ngModel)]="doc.nombre " class="form-control ">
+                </div>
+                <div class="form-group ">
+                    <label>Tamaño de Modulo</label>
+                    <input type="text " placehoolder="metros X2 " name="tamano " [(ngModel)]="doc.tamano " class="form-control ">
+
+                </div>
+                <!-- primera fila -->
+
+                <!-- segunada fila -->
+                <div class="form-group row ">
+                    <div class="col-sm-4 ">
+                        <label>Numero de Modulo</label>
+                        <input type="number " placehoolder="eje; 002 " class="form-control " name="numerodemodulo " [(ngModel)]="doc.numerodemodulo ">
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        <label>Precio Modulo</label>
+                        <input type="number " placehoolder="Precio " class="form-control" name="precio " [(ngModel)]="doc.precio ">
+                    </div>
+
+                    <div class="form-check col">
+                        <label class="form-check-label"> Estado</label>
+                        <input class="form-check-input" type="checkbox" name="estado" [(ngModel)]="doc.estado">
+
+                    </div>
+
+                </div>
+                <!-- segunada fila -->
+                <div class=" form-group ">
+                    <label>Descripcion</label>
+                    <textarea type="text " placehoolder="Escriba el Nombre " class="form-control " name="descripcion " [(ngModel)]="doc.descripcion "></textarea>
+
+                </div>
+
+
+                <button *ngIf="agregar " (click)="add() " class="btn btn-outline-primary mx-sm-1 "><a class=" material-icons ">done_all</a>Agregar</button>
+                <button *ngIf="actualizar " (click)="update() " class="btn btn-outline-warning "><a class=" material-icons ">change_circle</a>Actualizar</button>
+                <button *ngIf="agregar " (click)="clear() " class="btn btn-outline-danger "> <a class=" material-icons ">delete_sweep</a> Limpiar</button>
+
+            </form>
         </div>
-
-        <div class="form-group">
-            <label>Numero de Modulo</label>
-            <input type="text" placehoolder="eje; 002" class="form-control" name="numerodemodulo" [(ngModel)]="doc.numerodemodulo">
-
-        </div>
-
-        <div class="form-group">
-            <label>Precio Modulo</label>
-            <input type="text" placehoolder="Precio" class="form-control" name="precio" [(ngModel)]="doc.precio">
-
-        </div>
-
-        <div class="form-group">
-            <label>Descripcion</label>
-            <textarea type="text" placehoolder="Escrina el Nombre" class="form-control" name="descripcion" [(ngModel)]="doc.descripcion"></textarea>
-
-        </div>
-
-        <button *ngIf="agregar" (click)="add()" class="btn btn-success">Add</button>
-        <button *ngIf="actualizar" (click)="update()" class="btn btn-warning">Modificar</button>
-
-    </form>
+    </div>
 </div>

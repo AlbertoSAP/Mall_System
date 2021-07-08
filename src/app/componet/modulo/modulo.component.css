@@ -12,3 +12,34 @@
     height: auto;
     border-radius: 2px;
 }
+
+.fondo {
+    /* background-size: cover;
+    background: url('../../../assets/images/fondo.jpg');
+    height: 100%; */
+}
+
+.center-mytext {
+    text-align: center;
+}
+
+.hr {
+    color: black;
+}
+
+.btn-img {
+    background: url(../../../assets/images/send.png);
+    border: 0;
+    display: block;
+    height: 32px;
+    width: 32px;
+}
+
+input[type=checkbox] {
+    width: 25px;
+    height: 25px;
+    -moz-appearance: none;
+    position: relative;
+    top: 28px;
+    right: 10px;
+}

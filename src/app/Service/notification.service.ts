@@ -25,11 +25,16 @@ public eror2: any = {
 
     }
 
-    else{
+    if(cod == "error")
+    {
       this.eror2.cod = cod;
       this.eror2.smg ="Error revise";
     }
-
+    if(cod == "invalid form")
+{
+  this.eror2.cod = cod;
+  this.eror2.smg = " por favor complete el formulario"
+}
  //console.log(msg, cod,"service");
 
  return this.eror2;

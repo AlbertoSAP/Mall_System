@@ -5,5 +5,7 @@ export interface Modulos{
     numerodemodulo:number;
     descripcion: string;
     uid?: string;
+    estado?:boolean;
+    image?:string;
 
 }
