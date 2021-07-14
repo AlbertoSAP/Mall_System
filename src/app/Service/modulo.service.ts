@@ -5,6 +5,7 @@ import { Modulos } from '../interface/modulo';
 import { NotificationService } from './notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Datainf } from '../data/data';
 
 
 @Injectable({
@@ -61,6 +62,8 @@ export class ModuloService {
 
     viewModulo() {
         this.arreglo = [];
+        let IDataSource: any = [];
+
         const dbRef = this.db.collection('modulo').ref.get().then((snapshot) => {
             console.log(snapshot.docs);
             const data = snapshot.docs;
@@ -71,17 +74,24 @@ export class ModuloService {
             for (let docum of snapshot.docs) {
                 const sacar: any = docum.data();
                 // console.log(sacar, "sacar"); 
-                this.resultado.nombre = sacar.nombreLocal;
-                this.resultado.precio = sacar.precio;
-                this.resultado.tamano = sacar.tamano;
-                this.resultado.numerodemodulo = sacar.numeroModulo;
-                this.resultado.descripcion = sacar.descripcion;
-                this.resultado.uid = docum.id;
-                this.resultado.estado = sacar.estado;
-                this.resultado.image = sacar.image;
+                const respuesta : Modulos ={
+                    nombre: '',
+                    tamano: '',
+                    precio: 0,
+                    numerodemodulo: 0,
+                    descripcion: ''
+                };
+               respuesta.nombre = sacar.nombreLocal;
+               respuesta.precio = sacar.precio;
+               respuesta.tamano = sacar.tamano;
+               respuesta.numerodemodulo = sacar.numeroModulo;
+               respuesta.descripcion = sacar.descripcion;
+               respuesta.uid = docum.id;
+               respuesta.estado = sacar.estado;
+               respuesta.image = sacar.image;
 
                 //  console.log(this.resultado);
-                this.arreglo.push(this.resultado);
+                IDataSource.push(respuesta);
                 this.resultado = {
                     nombre: "",
                     tamano: "",
@@ -92,15 +102,14 @@ export class ModuloService {
                     estado: false
                 };
             }
-            console.log(this.arreglo, "service");
-
-            return this.arreglo;
-
         })
             .catch((error) => {
                 console.error(error);
             });
-
+            console.log(IDataSource ,  "service");
+            return IDataSource;
+           
+            
     }
 
 
@@ -111,10 +120,13 @@ export class ModuloService {
 
         // variable para fusionar resultado
         const lectura: any = [];
+        
+     
         const leer = this.db.collection('modulo').get().toPromise();
         leer.then(res => {
             const arr = res.docs;
             for (let arreglo of arr) {
+                
                 const a: any = arreglo.data();
                 // console.log(arreglo.id);
                 console.log(arreglo.data());
@@ -124,6 +136,7 @@ export class ModuloService {
                 this.resultado.tamano = a.tamano;
                 this.resultado.numerodemodulo = a.numeroModulo;
                 this.resultado.descripcion = a.descripcion;
+                this.resultado.estado = a.estado;
                 this.resultado.image = a.image;
                 lectura.push(this.resultado);
                 this.resultado = {
@@ -140,7 +153,7 @@ export class ModuloService {
             console.error(error);
         });
 
-
+        return lectura;
     }
 
 
@@ -182,7 +195,7 @@ export class ModuloService {
             this.resultado.descripcion = array.descripcion;
             this.resultado.estado = array.estado;
             console.log("this.resultado", this.resultado);
-            this.router.navigateByUrl("/modulo");
+    
             return this.resultado;
 
 

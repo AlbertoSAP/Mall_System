@@ -22,7 +22,7 @@ import { ModuloComponent } from './componet/modulo/modulo.component';
 import { ListamoduloComponent } from './componet/listamodulo/listamodulo.component';
 import {MatTableModule } from '@angular/material/table';
 import { DescripcionComponent } from './componet/descripcion/descripcion.component';
-
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -52,6 +52,7 @@ import { DescripcionComponent } from './componet/descripcion/descripcion.compone
     MatDialogModule,
     AngularFirestoreModule,
     MatTableModule,
+    MatButtonModule,
     
   ],
   providers: [],

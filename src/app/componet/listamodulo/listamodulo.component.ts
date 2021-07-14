@@ -10,31 +10,45 @@ import { ModuloService } from '../../Service/modulo.service';
   styleUrls: ['./listamodulo.component.css']
 })
 export class ListamoduloComponent implements OnInit {
-arreglo :any[]=[];
+  dataSource: any = [] ;
   myDataArray:any = {
     nombre: '',
     tamano: '',
     precio: 0,
     numerodemodulo: 0,
     descripcion: ''
-  }
-
-
+  };
+  
+  displayedColumns: string[] = [
+  'nombre',
+  'tamano',
+  'precio',
+  'numerodemodulo',
+  'descripcion'
+];
   constructor(private moduloServices: ModuloService,
-              ) { }
+              ) {}
 
   ngOnInit() {
-
     
-this.leer();
+    
+  this.leer();
   }
 
   leer(){
- this.moduloServices.viewModulo();
- this.arreglo = this.moduloServices.arreglo;
+//  this.moduloServices.viewModulo();
+ this.dataSource = this.moduloServices.viewModulo();
 
- console.log(this.arreglo,"desde ts listado");
+//  console.log(this.arreglo,"desde ts listado");
+console.log(this.dataSource, "forma 2");
+ 
    }
+
+   recargar(){
+  this.dataSource;
+  console.log(this.dataSource);
+  
+  }
 
    delete(id : string)
    {
