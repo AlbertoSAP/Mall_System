@@ -1,16 +1,17 @@
 <div class="row">
 
     <div class="col-md-4">
-        <img [src]="" class="img-fluid" alt="">
+        <img [src]="descrip.image" class="img-fluid">
         <a [routerLink]="" class="btn btn-outline-danger btn-block">Inicio</a>
         <br>
     </div>
 
     <div class="col-md-8">
-        <h3>Nombre del Local</h3>
-        <p>Precio</p>
-        <p>Descripcion</p>
-        <p>tamaño</p>
+        <h1>Nombre del Local: {{descrip.nombre}} </h1>
+        <h3>Precio: ${{descrip.precio}} </h3>
+        <h3>Descripcion: {{descrip.descripcion}} </h3>
+        <h3>tamaño: {{descrip.tamano}} </h3>
+        <h3>Estado: {{descrip.estado}} </h3>
 
     </div>
 </div>

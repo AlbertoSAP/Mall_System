@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Modulos } from 'src/app/interface/modulo';
 import { ModuloService } from '../../Service/modulo.service';
@@ -10,7 +11,7 @@ import { ModuloService } from '../../Service/modulo.service';
   styleUrls: ['./listamodulo.component.css']
 })
 export class ListamoduloComponent implements OnInit {
-  dataSource: any = [] ;
+  arreglo: any  ;
   myDataArray:any = {
     nombre: '',
     tamano: '',
@@ -26,7 +27,7 @@ export class ListamoduloComponent implements OnInit {
   'numerodemodulo',
   'descripcion'
 ];
-  constructor(private moduloServices: ModuloService,
+  constructor(private moduloServices: ModuloService
               ) {}
 
   ngOnInit() {
@@ -37,18 +38,16 @@ export class ListamoduloComponent implements OnInit {
 
   leer(){
 //  this.moduloServices.viewModulo();
- this.dataSource = this.moduloServices.viewModulo();
+  this.arreglo = this.moduloServices.viewModulo();
+// this.dataSource = this.moduloServices.viewModulo2();
 
+                   
 //  console.log(this.arreglo,"desde ts listado");
-console.log(this.dataSource, "forma 2");
+console.log(this.arreglo, "forma 2");
  
    }
 
-   recargar(){
-  this.dataSource;
-  console.log(this.dataSource);
   
-  }
 
    delete(id : string)
    {

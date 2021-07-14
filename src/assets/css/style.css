@@ -1035,7 +1035,8 @@ a.bg-danger:hover {
 
 .table-responsive {
     display: inline-block;
-    width: 100%;
+    width: auto;
+    /* ajustable el tamanho segun el contenido */
     overflow-x: auto;
 }
 

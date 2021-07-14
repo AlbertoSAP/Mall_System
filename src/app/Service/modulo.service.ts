@@ -120,7 +120,7 @@ export class ModuloService {
 
         // variable para fusionar resultado
         const lectura: any = [];
-        
+        const resultado1 : any = {};
      
         const leer = this.db.collection('modulo').get().toPromise();
         leer.then(res => {
@@ -129,16 +129,16 @@ export class ModuloService {
                 
                 const a: any = arreglo.data();
                 // console.log(arreglo.id);
-                console.log(arreglo.data());
-                this.resultado.uid = arreglo.id;
-                this.resultado.nombre = a.nombreLocal;
-                this.resultado.precio = a.precio;
-                this.resultado.tamano = a.tamano;
-                this.resultado.numerodemodulo = a.numeroModulo;
-                this.resultado.descripcion = a.descripcion;
-                this.resultado.estado = a.estado;
-                this.resultado.image = a.image;
-                lectura.push(this.resultado);
+                
+                // resultado1.uid = arreglo.id;
+                resultado1.nombre = a.nombreLocal;
+                resultado1.precio = a.precio;
+                resultado1.tamano = a.tamano;
+                resultado1.numerodemodulo = a.numeroModulo;
+                resultado1.descripcion = a.descripcion;
+                // resultado1.estado = a.estado;
+                // resultado1.image = a.image;
+                lectura.push(resultado1);
                 this.resultado = {
                     nombre: "",
                     tamano: "",
@@ -148,7 +148,7 @@ export class ModuloService {
                     uid: ""
                 };
             }
-            console.log(lectura);
+         
         }).catch((error) => {
             console.error(error);
         });
@@ -194,14 +194,16 @@ export class ModuloService {
             this.resultado.tamano = array.tamano;
             this.resultado.descripcion = array.descripcion;
             this.resultado.estado = array.estado;
-            console.log("this.resultado", this.resultado);
+            this.resultado.image = array.image;
+           
     
-            return this.resultado;
+          
 
 
         }).catch((error) => {
             console.error(error);
         });
+        return this.resultado;
     }
 
     Actualizar(argumento: Modulos) {
