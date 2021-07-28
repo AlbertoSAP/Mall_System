@@ -6,6 +6,8 @@ import { NotificationService } from './notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Datainf } from '../data/data';
+import Swal from 'sweetalert2';
+
 
 
 @Injectable({
@@ -46,15 +48,11 @@ export class ModuloService {
             "estado": documento.estado
 
         }).then(() => {
-            this.cod = 'Ok';
-            this.notificacion.eror(this.cod);
-            this.MuestraError();
+            Swal.fire('Ok...', 'Se Guardo!', 'success')
             this.arreglo = [];
             this.router.navigateByUrl("/lista");
         }).catch((error) => {
-            this.cod = 'Error';
-            this.notificacion.eror(this.cod);
-            this.MuestraError();
+            Swal.fire('Oops...', 'Sucedio un Error!', 'error')
         });
     
 
