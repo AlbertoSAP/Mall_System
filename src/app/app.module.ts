@@ -23,6 +23,7 @@ import { ListamoduloComponent } from './componet/listamodulo/listamodulo.compone
 import {MatTableModule } from '@angular/material/table';
 import { DescripcionComponent } from './componet/descripcion/descripcion.component';
 import {MatButtonModule} from '@angular/material/button';
+import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
@@ -49,10 +50,9 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule,
     MatSliderModule,
     BrowserAnimationsModule,
-    MatDialogModule,
     AngularFirestoreModule,
-    MatTableModule,
-    MatButtonModule,
+    MaterialModule
+ 
     
   ],
   providers: [],
