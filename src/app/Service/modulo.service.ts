@@ -6,6 +6,7 @@ import { NotificationService } from './notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Datainf } from '../data/data';
+import * as firebase from 'firebase';
 
 
 @Injectable({
@@ -34,7 +35,7 @@ export class ModuloService {
 
     }
     addfile(documento: Modulos) {
-
+      
         console.log('servicio');
 
         this.db.collection('modulo').doc().set({

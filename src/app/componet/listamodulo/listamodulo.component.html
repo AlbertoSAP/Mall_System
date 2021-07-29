@@ -3,7 +3,7 @@
         <h1> Modulos </h1>
     </div>
     <div>
-        <button class="btn btn-outline-success redondo " [routerLink]="['/modulo']">Nuevo Modulo</button>
+        <button class="btn btn-outline-success redondo " [routerLink]="['/modulo/agregar']">Nuevo Modulo</button>
     </div>
     <br>
     <div>
@@ -33,9 +33,9 @@
                     <th>
                         <div role="group">
                             <!-- <a class="btn btn-outline-primary" [routerLink]="[ '/modulo']">Editar</a> -->
-                            <button class="redondo btn btn-outline-primary mx-sm-1" (click)="actualizar(data.uid)">Modificar</button>
+                            <button class="redondo btn btn-outline-primary mx-sm-1" [routerLink]="['/modulo',data.uid]">Modificar</button>
                             <button class="redondo btn btn-outline-danger  mx-sm-1" (click)="delete(data.uid)">Borrar</button>
-                            <button class="redondo btn btn-outline-warning  mx-sm-1" (click)="delete(data.uid)">Ver</button>
+                            <button class="redondo btn btn-outline-warning  mx-sm-1" [routerLink]="['/descripcion',data.uid]">Ver</button>
                         </div>
                     </th>
 

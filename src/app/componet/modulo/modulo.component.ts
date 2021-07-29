@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Modulos } from 'src/app/interface/modulo';
 import { ModuloService } from 'src/app/Service/modulo.service';
 
@@ -18,26 +19,31 @@ doc:Modulos={
   estado:false
 };
 
-
+image:string = "";
 actualizar : boolean = false;
 agregar : boolean = true;
 id:any = "";
-  constructor(private modulo: ModuloService) { }
+  constructor(private modulo: ModuloService,
+    private activateRout : ActivatedRoute) { 
+    
+  }
 
   ngOnInit(): void {
-   this.doc = this.modulo.resultado;
-   console.log(this.actualizar);
-console.log(this.doc.uid);
-if(this.doc.uid == ""){
-this.actualizar = false;
-this.agregar = true;
-}else{
-  this.actualizar = true;
-  this.agregar = false;
-  
-}
-this.id = this.doc.uid; 
-
+    // 
+    this.activateRout.params.subscribe(parametro => {
+      console.log(parametro);
+      
+      if (parametro.id == "agregar") {
+        this.actualizar = false;
+         }
+      else{
+      this.actualizar = true;
+      this.agregar = false;
+      this.doc = this.modulo.leeruno(parametro.id);
+      console.log(this.doc);
+    }
+    });
+    // 
   }
 
   add(){

@@ -12,7 +12,7 @@ const routes: Routes = [
 
 
   
-    { path: 'modulo', component: ModuloComponent },
+    { path: 'modulo/:id', component: ModuloComponent },
     { path: 'lista', component:  ListamoduloComponent},
     {path: 'descripcion/:busque', component: DescripcionComponent}
     //{ path: 'path/:routeParam', component: MyComponent },
