@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from './Service/Auth.services';
 
 
 
@@ -11,8 +12,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class AppComponent {
   title = 'MallSystem';
 
-  constructor(db : AngularFirestore) {
-   
-    
-  }
+  constructor(private db : AngularFirestore,
+    public auth: AuthService) {
+  console.log(this.auth.estado);
+  
+    }
 }

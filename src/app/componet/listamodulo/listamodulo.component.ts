@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { async } from 'rxjs';
 import { Modulos } from 'src/app/interface/modulo';
 import { ModuloService } from '../../Service/modulo.service';
 
@@ -19,8 +20,7 @@ export class ListamoduloComponent implements OnInit {
     numerodemodulo: 0,
     descripcion: ''
   };
-  
-  displayedColumns: string[] = [
+    displayedColumns: string[] = [
   'nombre',
   'tamano',
   'precio',
@@ -28,20 +28,23 @@ export class ListamoduloComponent implements OnInit {
   'descripcion'
 ];
   constructor(private moduloServices: ModuloService
-              ) {}
+              ) {
+                  this.moduloServices.viewModulo2();
+                  this.arreglo = this.moduloServices.arreglo;
+                  
+              }
 
-  ngOnInit() {
-    
-    
+   ngOnInit() {
+  
   this.leer();
   }
 
   leer(){
 //  this.moduloServices.viewModulo();
-  this.arreglo = this.moduloServices.viewModulo();
-// this.dataSource = this.moduloServices.viewModulo2();
-
-                   
+  // this.arreglo = this.moduloServices.viewModulo();
+  // this.arreglo = this.moduloServices.viewModulo2();
+  
+      
 //  console.log(this.arreglo,"desde ts listado");
 console.log(this.arreglo, "forma 2");
  
@@ -58,7 +61,5 @@ this.ngOnInit();
 
    actualizar(id : string){
     this.moduloServices.leeruno(id);
-  
-
    }
 }

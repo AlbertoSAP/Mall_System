@@ -2,15 +2,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './Auth/login/login.component';
 import { RegisterComponent } from './Auth/register/register.component';
-import { ModuloComponent } from './componet/modulo/modulo.component';
-import { ListamoduloComponent} from './componet/listamodulo/listamodulo.component';
 import { ModuloRouting } from './componet/modulo.routing';
+import { AuthGuard } from './guardian/auth.guard';
+import { LoginGuard } from './guardian/login.guard';
 
 
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
-  { path: 'Login', component: LoginComponent },
+  { path: 'Login', component: LoginComponent},
   { path: 'Register', component: RegisterComponent },
 
   // { path: 'path4', component: Name4Component },

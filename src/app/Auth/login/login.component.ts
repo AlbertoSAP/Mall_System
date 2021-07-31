@@ -15,16 +15,18 @@ export class LoginComponent implements OnInit {
      password:'',
   }
 
-  constructor(private service: AuthService) { }
+  constructor(private service: AuthService) {
+    this.service.soloLogin(false);
+   }
 
   ngOnInit(): void {
+    
   }
   Login(){
-
-  this.service.login(this.user);
+this.service.login(this.user);
 console.log(this.user);
-
-
   }
-
+social(arg:string){
+  this.service.loginsocial(arg);
+}
 }

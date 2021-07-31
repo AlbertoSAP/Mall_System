@@ -5,7 +5,6 @@ import { Modulos } from '../interface/modulo';
 import { NotificationService } from './notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Datainf } from '../data/data';
 import * as firebase from 'firebase';
 
 
@@ -120,41 +119,65 @@ export class ModuloService {
     viewModulo2() {
 
         // variable para fusionar resultado
-        const lectura: any = [];
-        const resultado1 : any = {};
+        const lectura: any[] = [];
+       
      
-        const leer = this.db.collection('modulo').get().toPromise();
-        leer.then(res => {
-            const arr = res.docs;
-            for (let arreglo of arr) {
-                
-                const a: any = arreglo.data();
-                // console.log(arreglo.id);
-                
-                // resultado1.uid = arreglo.id;
-                resultado1.nombre = a.nombreLocal;
-                resultado1.precio = a.precio;
-                resultado1.tamano = a.tamano;
-                resultado1.numerodemodulo = a.numeroModulo;
-                resultado1.descripcion = a.descripcion;
-                // resultado1.estado = a.estado;
-                // resultado1.image = a.image;
-                lectura.push(resultado1);
-                this.resultado = {
-                    nombre: "",
-                    tamano: "",
-                    precio: 0,
-                    numerodemodulo: 0,
-                    descripcion: "",
-                    uid: ""
-                };
-            }
-         
-        }).catch((error) => {
-            console.error(error);
-        });
+        this.db.collection('modulo').get().subscribe(res =>{
+            console.log(res, 'subscribe');
 
-        return lectura;
+            const arr = res.docs;
+                for (let arreglo of arr) {
+                    let resultado1 : any = {};
+                    const a: any = arreglo.data();
+                    // console.log(arreglo.id);
+                    
+                    // resultado1.uid = arreglo.id;
+                    resultado1.nombre = a.nombreLocal;
+                    resultado1.precio = a.precio;
+                    resultado1.tamano = a.tamano;
+                    resultado1.numerodemodulo = a.numeroModulo;
+                    resultado1.descripcion = a.descripcion;
+                    // resultado1.estado = a.estado;
+                    // resultado1.image = a.image;
+                    this.arreglo.push(resultado1);
+           this.arreglo.sort((a: any, b: any) => a.numerodemodulo - b.numerodemodulo);
+                    resultado1 = {};
+                }
+                // this.arreglo = lectura.sort((a: any, b: any) => b.numerodemodulo - a.numerodemodulo);
+        });
+       
+        
+        // leer.then(res => {
+        //     const arr = res.docs;
+        //     for (let arreglo of arr) {
+                
+        //         const a: any = arreglo.data();
+        //         // console.log(arreglo.id);
+                
+        //         // resultado1.uid = arreglo.id;
+        //         resultado1.nombre = a.nombreLocal;
+        //         resultado1.precio = a.precio;
+        //         resultado1.tamano = a.tamano;
+        //         resultado1.numerodemodulo = a.numeroModulo;
+        //         resultado1.descripcion = a.descripcion;
+        //         // resultado1.estado = a.estado;
+        //         // resultado1.image = a.image;
+        //         lectura.push(resultado1);
+        //         this.resultado = {
+        //             nombre: "",
+        //             tamano: "",
+        //             precio: 0,
+        //             numerodemodulo: 0,
+        //             descripcion: "",
+        //             uid: ""
+        //         };
+        //     }
+         
+        // }).catch((error) => {
+        //     console.error(error);
+        // });
+
+        // return lectura;
     }
 
 
@@ -240,6 +263,9 @@ export class ModuloService {
                 console.error("Error updating document: ", error);
             });
 
+
+    }
+    consulta(){
 
     }
 

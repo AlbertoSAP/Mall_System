@@ -71,10 +71,11 @@
                         </li>
                     </ul>
                 </li>
-                <li class="user-profile header-notification">
-                    <a href="#!">
-                        <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                        <span>John Doe</span>
+                {{estado}}
+                <li *ngIf="estado" class="user-profile header-notification">
+                    <a>
+                        <img [src]="auth.usuario.foto" class="img-radius" alt="User-Profile-Image">
+                        <span>{{auth.usuario.nombre}}</span>
                         <i class="ti-angle-down"></i>
                     </a>
                     <ul class="show-notification profile-notification">
@@ -99,12 +100,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="auth-normal-sign-in.html">
+                            <a type="button" (click)="auth.logout()">
                                 <i class="ti-layout-sidebar-left"></i> Logout
                             </a>
                         </li>
                     </ul>
                 </li>
+                <li *ngIf="!estado"><a type="button" [routerLink]="['/Login']">Login</a></li>
             </ul>
         </div>
     </div>
