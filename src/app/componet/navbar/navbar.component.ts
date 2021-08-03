@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/Service/Auth.services';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginComponent } from 'src/app/Auth/login/login.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,7 +10,10 @@ import { AuthService } from 'src/app/Service/Auth.services';
 })
 export class NavbarComponent implements OnInit {
 estado:boolean=false;
-  constructor(public auth: AuthService) { 
+ 
+  constructor(public auth: AuthService,
+    private mathdialogo: MatDialog,
+    private Arouter: ActivatedRoute) { 
 
 
   }
@@ -26,4 +30,11 @@ estado:boolean=false;
     });
   }
 
+  Muestra() {
+    this.mathdialogo.open(LoginComponent, {
+        data: {},
+        minWidth: 420,
+        maxWidth: 400,
+    });
+  }
 }

@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { NotificationComponent } from '../componet/notification/notification.component';
 import { Modulos } from '../interface/modulo';
 import { NotificationService } from './notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
+import Swal from 'sweetalert2';
+import { query } from '@angular/animations';
+import { map } from 'rxjs/operators';
+
 
 
 @Injectable({
     providedIn: 'root'
 })
 export class ModuloService {
+
     arreglo: Modulos[] = [];
     sms: string = '';
     cod: string = '';
@@ -23,14 +28,15 @@ export class ModuloService {
         descripcion: "",
         uid: ""
     };
-
+    private itemCollection!: AngularFirestoreCollection<Modulos>;
 
     constructor(private db: AngularFirestore,
         public notificacion: NotificationService,
         public mathdialogo: MatDialog,
-        private router: Router
+        private router: Router,
+        private firestore: AngularFirestore
     ) {
-
+//   this.viewModulo2();
 
     }
     addfile(documento: Modulos) {
@@ -46,9 +52,7 @@ export class ModuloService {
             "estado": documento.estado
 
         }).then(() => {
-            this.cod = 'Ok';
-            this.notificacion.eror(this.cod);
-            this.MuestraError();
+            Swal.fire('Ok','Se ha Guardado con Exito', "info");
             this.arreglo = [];
             this.router.navigateByUrl("/lista");
         }).catch((error) => {
@@ -117,21 +121,19 @@ export class ModuloService {
     //                                lectura asap
     // *******************************************************************************************************************
     viewModulo2() {
-
         // variable para fusionar resultado
         const lectura: any[] = [];
-       
+     this.arreglo = [];  
      
-        this.db.collection('modulo').get().subscribe(res =>{
+   return this.db.collection('modulo').get().pipe(map((res =>{
             console.log(res, 'subscribe');
-
             const arr = res.docs;
                 for (let arreglo of arr) {
                     let resultado1 : any = {};
                     const a: any = arreglo.data();
-                    // console.log(arreglo.id);
                     
-                    // resultado1.uid = arreglo.id;
+                    
+                    resultado1.uid = arreglo.id;
                     resultado1.nombre = a.nombreLocal;
                     resultado1.precio = a.precio;
                     resultado1.tamano = a.tamano;
@@ -140,11 +142,13 @@ export class ModuloService {
                     // resultado1.estado = a.estado;
                     // resultado1.image = a.image;
                     this.arreglo.push(resultado1);
-           this.arreglo.sort((a: any, b: any) => a.numerodemodulo - b.numerodemodulo);
+                   this.arreglo.sort((a: any, b: any) => a.numerodemodulo - b.numerodemodulo);
                     resultado1 = {};
+                
                 }
+                return this.arreglo;
                 // this.arreglo = lectura.sort((a: any, b: any) => b.numerodemodulo - a.numerodemodulo);
-        });
+        })));
        
         
         // leer.then(res => {
@@ -265,8 +269,21 @@ export class ModuloService {
 
 
     }
-    consulta(){
 
-    }
+    load(){
+this.itemCollection = this.firestore.collection<Modulos>('modulo', query => query.orderBy('numeroModulo','desc'));
+return this.itemCollection.valueChanges()
+.pipe(map((modulo: Modulos[] ) =>
+{
+    console.log(modulo, 'load');
+    this.arreglo = [];
+for(let modelo of modulo){
+this.arreglo.unshift(modelo);
+}
+return this.arreglo;
+    
+}))    
+}
+  
 
 }

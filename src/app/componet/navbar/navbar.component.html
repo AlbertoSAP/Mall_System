@@ -71,10 +71,9 @@
                         </li>
                     </ul>
                 </li>
-                {{estado}}
                 <li *ngIf="estado" class="user-profile header-notification">
                     <a>
-                        <img [src]="auth.usuario.foto" class="img-radius" alt="User-Profile-Image">
+                        <img *ngIf="estado" [src]="auth.usuario.foto" class="img-radius" alt="User-Profile-Image">
                         <span>{{auth.usuario.nombre}}</span>
                         <i class="ti-angle-down"></i>
                     </a>
@@ -100,13 +99,13 @@
                             </a>
                         </li>
                         <li>
-                            <a type="button" (click)="auth.logout()">
+                            <a *ngIf="estado" type="button" class="btn btn-outline-light" (click)="auth.logout()">
                                 <i class="ti-layout-sidebar-left"></i> Logout
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li *ngIf="!estado"><a type="button" [routerLink]="['/Login']">Login</a></li>
+                <li><button *ngIf="!estado" type="button" class="btn btn-outline-secondary" (click)=" Muestra()">Login</button></li>
             </ul>
         </div>
     </div>

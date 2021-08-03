@@ -30,7 +30,7 @@ export class AuthService {
             console.log('Estado Usuario', user);
 
             if (!user) {
-                this.usuario.nombre = "no register";
+                
                 return;
                 
             }
@@ -111,7 +111,7 @@ export class AuthService {
                this.router.navigateByUrl('/lista')
                 // The signed-in user info.
                 var user:any = result.user;
-
+this.mathdialogo.closeAll();
                 // This gives you a Facebook Access Token. You can use it to access the Facebook API.
                 var accessToken = credential.accessToken;
                  localStorage.setItem('user', user?.displayName);
@@ -139,7 +139,5 @@ export class AuthService {
         
                 }
 
-                soloLogin(estado : boolean){
-this.estado = estado;
-                }
+
 }

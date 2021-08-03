@@ -1,7 +1,7 @@
-<div *ngIf="auth.estado" id="pcoded" class="pcoded">
+<div id="pcoded" class="pcoded">
     <div class="pcoded-overlay-box"></div>
     <div class="pcoded-container navbar-wrapper">
-        <app-navbar *ngIf="auth.estado"></app-navbar>
+        <app-navbar></app-navbar>
         <app-header></app-header>
         <div class="pcoded-content pcoded-main-container">
             <div class="pcoded-inner-content">
@@ -15,4 +15,3 @@
         </div>
     </div>
 </div>
-<router-outlet *ngIf="!auth.estado"></router-outlet>

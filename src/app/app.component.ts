@@ -11,10 +11,18 @@ import { AuthService } from './Service/Auth.services';
 })
 export class AppComponent {
   title = 'MallSystem';
-
+estado:boolean= false;
   constructor(private db : AngularFirestore,
     public auth: AuthService) {
-  console.log(this.auth.estado);
+  this.auth.auth.authState.subscribe(user =>{
+if(!user)
+{
+this.estado=false;
+}else{
+this.estado=true;
+}
+
+  });
   
     }
 }

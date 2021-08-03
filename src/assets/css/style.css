@@ -9839,7 +9839,7 @@ body .pcoded[vertical-nav-type="compact"] .main-menu .pcoded-badge {
 }
 
 body.menu-bottom .navbar-wrapper {
-    .z-index: 1050;
+    z-index: 1050;
 }
 
 body.menu-bottom .pcoded .pcoded-main-container {

@@ -27,11 +27,13 @@ export class ListamoduloComponent implements OnInit {
   'numerodemodulo',
   'descripcion'
 ];
-  constructor(private moduloServices: ModuloService
+  constructor(public moduloServices: ModuloService
               ) {
-                  this.moduloServices.viewModulo2();
-                  this.arreglo = this.moduloServices.arreglo;
-                  
+              // this.arreglo = this.moduloServices.arreglo;
+              this.moduloServices.viewModulo2().subscribe(()=>{
+                
+              });
+
               }
 
    ngOnInit() {
