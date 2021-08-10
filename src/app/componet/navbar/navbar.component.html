@@ -29,7 +29,7 @@
                 </li>
             </ul>
             <ul class="nav-right">
-                <li class="header-notification">
+                <li *ngIf="auth.estado" class="header-notification">
                     <a href="#!">
                         <i class="ti-bell"></i>
                         <span class="badge bg-c-pink"></span>
@@ -71,7 +71,7 @@
                         </li>
                     </ul>
                 </li>
-                <li *ngIf="estado" class="user-profile header-notification">
+                <li *ngIf="auth.estado" class="user-profile header-notification">
                     <a>
                         <img *ngIf="estado" [src]="auth.usuario.foto" class="img-radius" alt="User-Profile-Image">
                         <span>{{auth.usuario.nombre}}</span>
@@ -99,13 +99,13 @@
                             </a>
                         </li>
                         <li>
-                            <a *ngIf="estado" type="button" class="btn btn-outline-light" (click)="auth.logout()">
+                            <a *ngIf="auth.estado" type="button" class="btn btn-outline-light" (click)="salir()">
                                 <i class="ti-layout-sidebar-left"></i> Logout
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li><button *ngIf="!estado" type="button" class="btn btn-outline-secondary" (click)=" Muestra()">Login</button></li>
+                <li><button *ngIf="!auth.estado" type="button" class="btn btn-outline-secondary" (click)=" Muestra()">Login</button></li>
             </ul>
         </div>
     </div>

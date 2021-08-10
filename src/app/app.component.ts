@@ -14,15 +14,6 @@ export class AppComponent {
 estado:boolean= false;
   constructor(private db : AngularFirestore,
     public auth: AuthService) {
-  this.auth.auth.authState.subscribe(user =>{
-if(!user)
-{
-this.estado=false;
-}else{
-this.estado=true;
-}
-
-  });
   
     }
 }

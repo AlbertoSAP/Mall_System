@@ -30,13 +30,14 @@ export class AuthService {
             console.log('Estado Usuario', user);
 
             if (!user) {
-                
-                return;
+                this.estado =false
+                return ;
                 
             }
             this.usuario.nombre = user.displayName;
             this.usuario.uid = user.uid;
             this.usuario.foto = user.photoURL;
+            this.estado = true; 
 
         })
 
@@ -135,9 +136,8 @@ this.mathdialogo.closeAll();
 
     logout(){
         localStorage.clear();
+        this.router.navigateByUrl('/');
         this.auth.signOut();
-        
-                }
-
+       }
 
 }

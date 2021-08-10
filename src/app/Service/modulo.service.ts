@@ -16,7 +16,7 @@ import { map } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class ModuloService {
-
+  imgApi:string="https://firebasestorage.googleapis.com/v0/b/mallsystem.appspot.com/o/imagenes%2F";
     arreglo: Modulos[] = [];
     sms: string = '';
     cod: string = '';
@@ -54,7 +54,7 @@ export class ModuloService {
         }).then(() => {
             Swal.fire('Ok','Se ha Guardado con Exito', "info");
             this.arreglo = [];
-            this.router.navigateByUrl("/lista");
+            this.router.navigate(['/lista']);
         }).catch((error) => {
             this.cod = 'Error';
             this.notificacion.eror(this.cod);
@@ -115,8 +115,6 @@ export class ModuloService {
            
             
     }
-
-
     //********************************************************************************************************************
     //                                lectura asap
     // *******************************************************************************************************************
@@ -124,25 +122,24 @@ export class ModuloService {
         // variable para fusionar resultado
         const lectura: any[] = [];
      this.arreglo = [];  
-     
-   return this.db.collection('modulo').get().pipe(map((res =>{
+   
+ const respuesta = this.db.collection('modulo').get();
+  return respuesta.pipe(map((res =>{
             console.log(res, 'subscribe');
             const arr = res.docs;
                 for (let arreglo of arr) {
                     let resultado1 : any = {};
                     const a: any = arreglo.data();
-                    
-                    
                     resultado1.uid = arreglo.id;
                     resultado1.nombre = a.nombreLocal;
                     resultado1.precio = a.precio;
                     resultado1.tamano = a.tamano;
                     resultado1.numerodemodulo = a.numeroModulo;
                     resultado1.descripcion = a.descripcion;
-                    // resultado1.estado = a.estado;
+                    resultado1.estado = a.estado;
                     // resultado1.image = a.image;
                     this.arreglo.push(resultado1);
-                   this.arreglo.sort((a: any, b: any) => a.numerodemodulo - b.numerodemodulo);
+                    this.arreglo.sort((a: any, b: any) => a.numerodemodulo - b.numerodemodulo);
                     resultado1 = {};
                 
                 }
@@ -186,7 +183,15 @@ export class ModuloService {
 
 
     delete(id: string) {
-        var Ref = this.db.collection('modulo').doc(id).delete();
+        var Ref = this.db.collection('modulo').doc(id).delete().then(res =>{
+            Swal.fire('Borar','Borrado','info');
+
+        }).catch((error)=>{
+            Swal.fire('Error','No Borrado','error');
+
+        });
+
+             
       
         // this.viewModulo();
 
@@ -222,11 +227,9 @@ export class ModuloService {
             this.resultado.tamano = array.tamano;
             this.resultado.descripcion = array.descripcion;
             this.resultado.estado = array.estado;
-            this.resultado.image = array.image;
-           
-    
-          
 
+            var url = `${this.imgApi}${array.image}?alt=media&token=${array.tokenImage}`;
+            this.resultado.image =url ;
 
         }).catch((error) => {
             console.error(error);

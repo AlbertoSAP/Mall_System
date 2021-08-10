@@ -10,7 +10,7 @@ import { LoginGuard } from './guardian/login.guard';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
-  { path: 'Login', component: LoginComponent},
+  // { path: 'Login', component: LoginComponent},
   { path: 'Register', component: RegisterComponent },
 
   // { path: 'path4', component: Name4Component },

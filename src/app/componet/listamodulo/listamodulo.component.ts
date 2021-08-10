@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { async } from 'rxjs';
-import { Modulos } from 'src/app/interface/modulo';
 import { ModuloService } from '../../Service/modulo.service';
 
 
@@ -20,7 +16,7 @@ export class ListamoduloComponent implements OnInit {
     numerodemodulo: 0,
     descripcion: ''
   };
-    displayedColumns: string[] = [
+  displayedColumns: string[] = [
   'nombre',
   'tamano',
   'precio',
@@ -43,25 +39,19 @@ export class ListamoduloComponent implements OnInit {
 
   leer(){
 //  this.moduloServices.viewModulo();
-  // this.arreglo = this.moduloServices.viewModulo();
-  // this.arreglo = this.moduloServices.viewModulo2();
-  
-      
+// this.arreglo = this.moduloServices.viewModulo();
+// this.arreglo = this.moduloServices.viewModulo2();      
 //  console.log(this.arreglo,"desde ts listado");
-console.log(this.arreglo, "forma 2");
+
  
    }
-
-  
-
-   delete(id : string)
+delete(id : any)
    {
 this.moduloServices.delete(id);
 console.log( id, "hi");
 this.ngOnInit();
    }
-
-   actualizar(id : string){
+actualizar(id : string){
     this.moduloServices.leeruno(id);
    }
 }

@@ -14,27 +14,31 @@ estado:boolean=false;
   constructor(public auth: AuthService,
     private mathdialogo: MatDialog,
     private Arouter: ActivatedRoute) { 
-
-
+      this.auth.auth.authState.subscribe(user =>{
+        if(user){
+         this.estado =true;
+         console.log(user, 'nav');
+       }
+       else{
+         this.estado;
+       }
+     });
   }
 
   ngOnInit(): void {
-    this.auth.auth.authState.subscribe(user =>{
-       if(user){
-        this.estado =true;
-        console.log(user, 'nav');
-      }
-      else{
-        this.estado;
-      }
-    });
+   
   }
 
   Muestra() {
     this.mathdialogo.open(LoginComponent, {
         data: {},
-        minWidth: 420,
-        maxWidth: 400,
+        minWidth: 300,
+        minHeight:250,
+        maxWidth: 350,
     });
+  }
+  salir(){
+    this.auth.logout();
+    this.ngOnInit();
   }
 }
