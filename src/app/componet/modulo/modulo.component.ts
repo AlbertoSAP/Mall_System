@@ -18,12 +18,11 @@ doc:Modulos={
   uid:"", 
   estado:false
 };
-
-image:string = "";
+image:any;
 actualizar : boolean = false;
 agregar : boolean = true;
 id:any = "";
-  constructor(private modulo: ModuloService,
+  constructor(public modulo: ModuloService,
     private activateRout : ActivatedRoute) { 
     
   }
@@ -47,11 +46,13 @@ id:any = "";
   }
 
   add(){
+    this.doc.image = this.modulo.datos.links;
       this.modulo.addfile(this.doc);
   }
 
 // modificamos
   update(){
+this.doc.image = this.modulo.datos.links;
 this.modulo.Actualizar(this.doc);
   }
 
@@ -65,4 +66,24 @@ this.modulo.Actualizar(this.doc);
       numerodemodulo:0,
     }
   }
+
+  public subirArchivo(event:any) {
+    const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result="";
+    const charactersLength = characters.length;
+    for ( let i = 0; i < 5; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));    }
+        const path = "imagenes";
+        const name ="imag"+result;
+        const file = event.target.files[0];
+        const link:any = this.modulo.subirimagen(file,path,name);
+        this.doc.image = link;
+        console.log(this.doc.image, 'imagen cargada');
+        
+ // console.log(event.target.files[0]);
+      
+  }
+
+  
+
 }

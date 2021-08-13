@@ -7,8 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import Swal from 'sweetalert2';
-import { query } from '@angular/animations';
 import { map } from 'rxjs/operators';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 
@@ -16,7 +16,7 @@ import { map } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class ModuloService {
-  imgApi:string="https://firebasestorage.googleapis.com/v0/b/mallsystem.appspot.com/o/imagenes%2F";
+    imgApi: string = "https://firebasestorage.googleapis.com/v0/b/mallsystem.appspot.com/o/imagenes%2F";
     arreglo: Modulos[] = [];
     sms: string = '';
     cod: string = '';
@@ -26,21 +26,48 @@ export class ModuloService {
         precio: 0,
         numerodemodulo: 0,
         descripcion: "",
-        uid: ""
+        uid: "",
+        image:""
     };
+    datos = { name: "", links:"" };
     private itemCollection!: AngularFirestoreCollection<Modulos>;
 
     constructor(private db: AngularFirestore,
         public notificacion: NotificationService,
         public mathdialogo: MatDialog,
         private router: Router,
-        private firestore: AngularFirestore
-    ) {
-//   this.viewModulo2();
+        private storage: AngularFireStorage
 
+    ) {
+        //   this.viewModulo2();
     }
-    addfile(documento: Modulos) {
+
+    subirimagen(file: any, path: string, nombre: string) {
+        const filepath = path + '/' + nombre;
+        const ref = this.storage.ref(filepath);
+        const tarea = ref.put(file);
+        tarea.then((res) => {
+            this.datos.name = res.ref.name;
+            console.log(res.ref.name);
+            const url = path+'/'+res.ref.name;
+            this.link(url);
+            // this.datos.token = res.ref
+            console.log(res);
+        }).catch((error)=>{console.log(error);
+        });
+
       
+    }
+link(path:string)
+{
+    this.storage.ref(path).getDownloadURL().subscribe(resp =>{
+        console.log(resp, 'link');
+        this.datos.links = resp;
+        
+    })
+}
+
+    addfile(documento: Modulos) {
         console.log('servicio');
 
         this.db.collection('modulo').doc().set({
@@ -49,18 +76,21 @@ export class ModuloService {
             "precio": documento.precio,
             "descripcion": documento.descripcion,
             "tamano": documento.tamano,
-            "estado": documento.estado
+            "estado": documento.estado,
+            "imageLink": documento.image
 
         }).then(() => {
-            Swal.fire('Ok','Se ha Guardado con Exito', "info");
+            Swal.fire('Ok', 'Se ha Guardado con Exito', "info");
             this.arreglo = [];
             this.router.navigate(['/lista']);
+            this.datos.links="";
+            this.datos.name="";
         }).catch((error) => {
             this.cod = 'Error';
             this.notificacion.eror(this.cod);
             this.MuestraError();
         });
-    
+
 
     }
 
@@ -78,21 +108,21 @@ export class ModuloService {
             for (let docum of snapshot.docs) {
                 const sacar: any = docum.data();
                 // console.log(sacar, "sacar"); 
-                const respuesta : Modulos ={
+                const respuesta: Modulos = {
                     nombre: '',
                     tamano: '',
                     precio: 0,
                     numerodemodulo: 0,
                     descripcion: ''
                 };
-               respuesta.nombre = sacar.nombreLocal;
-               respuesta.precio = sacar.precio;
-               respuesta.tamano = sacar.tamano;
-               respuesta.numerodemodulo = sacar.numeroModulo;
-               respuesta.descripcion = sacar.descripcion;
-               respuesta.uid = docum.id;
-               respuesta.estado = sacar.estado;
-               respuesta.image = sacar.image;
+                respuesta.nombre = sacar.nombreLocal;
+                respuesta.precio = sacar.precio;
+                respuesta.tamano = sacar.tamano;
+                respuesta.numerodemodulo = sacar.numeroModulo;
+                respuesta.descripcion = sacar.descripcion;
+                respuesta.uid = docum.id;
+                respuesta.estado = sacar.estado;
+                respuesta.image = sacar.imageLink;
 
                 //  console.log(this.resultado);
                 IDataSource.push(respuesta);
@@ -102,7 +132,7 @@ export class ModuloService {
                     precio: 0,
                     numerodemodulo: 0,
                     descripcion: "",
-                    uid: "", 
+                    uid: "",
                     estado: false
                 };
             }
@@ -110,10 +140,10 @@ export class ModuloService {
             .catch((error) => {
                 console.error(error);
             });
-            console.log(IDataSource ,  "service");
-            return IDataSource;
-           
-            
+        console.log(IDataSource, "service");
+        return IDataSource;
+
+
     }
     //********************************************************************************************************************
     //                                lectura asap
@@ -121,81 +151,45 @@ export class ModuloService {
     viewModulo2() {
         // variable para fusionar resultado
         const lectura: any[] = [];
-     this.arreglo = [];  
-   
- const respuesta = this.db.collection('modulo').get();
-  return respuesta.pipe(map((res =>{
-            console.log(res, 'subscribe');
-            const arr = res.docs;
-                for (let arreglo of arr) {
-                    let resultado1 : any = {};
-                    const a: any = arreglo.data();
-                    resultado1.uid = arreglo.id;
-                    resultado1.nombre = a.nombreLocal;
-                    resultado1.precio = a.precio;
-                    resultado1.tamano = a.tamano;
-                    resultado1.numerodemodulo = a.numeroModulo;
-                    resultado1.descripcion = a.descripcion;
-                    resultado1.estado = a.estado;
-                    // resultado1.image = a.image;
-                    this.arreglo.push(resultado1);
-                    this.arreglo.sort((a: any, b: any) => a.numerodemodulo - b.numerodemodulo);
-                    resultado1 = {};
-                
-                }
-                return this.arreglo;
-                // this.arreglo = lectura.sort((a: any, b: any) => b.numerodemodulo - a.numerodemodulo);
-        })));
-       
-        
-        // leer.then(res => {
-        //     const arr = res.docs;
-        //     for (let arreglo of arr) {
-                
-        //         const a: any = arreglo.data();
-        //         // console.log(arreglo.id);
-                
-        //         // resultado1.uid = arreglo.id;
-        //         resultado1.nombre = a.nombreLocal;
-        //         resultado1.precio = a.precio;
-        //         resultado1.tamano = a.tamano;
-        //         resultado1.numerodemodulo = a.numeroModulo;
-        //         resultado1.descripcion = a.descripcion;
-        //         // resultado1.estado = a.estado;
-        //         // resultado1.image = a.image;
-        //         lectura.push(resultado1);
-        //         this.resultado = {
-        //             nombre: "",
-        //             tamano: "",
-        //             precio: 0,
-        //             numerodemodulo: 0,
-        //             descripcion: "",
-        //             uid: ""
-        //         };
-        //     }
-         
-        // }).catch((error) => {
-        //     console.error(error);
-        // });
+        this.arreglo = [];
 
-        // return lectura;
+        const respuesta = this.db.collection('modulo').get();
+        return respuesta.pipe(map((res => {
+            console.log(res, 'subscribe');
+            if(res.empty == true){
+Swal.fire('Vacio', 'No existe elemetos que mostrar', 'warning')
+            }
+            const arr = res.docs;
+            for (let arreglo of arr) {
+                let resultado1: any = {};
+                const a: any = arreglo.data();
+                resultado1.uid = arreglo.id;
+                resultado1.nombre = a.nombreLocal;
+                resultado1.precio = a.precio;
+                resultado1.tamano = a.tamano;
+                resultado1.numerodemodulo = a.numeroModulo;
+                resultado1.descripcion = a.descripcion;
+                resultado1.estado = a.estado;
+                resultado1.image = a.imageLink;
+                this.arreglo.push(resultado1);
+                this.arreglo.sort((a: any, b: any) => a.numerodemodulo - b.numerodemodulo);
+                resultado1 = {};
+
+            }
+            return this.arreglo;
+           
+        })));
     }
 
 
     delete(id: string) {
-        var Ref = this.db.collection('modulo').doc(id).delete().then(res =>{
-            Swal.fire('Borar','Borrado','info');
+        var Ref = this.db.collection('modulo').doc(id).delete().then(res => {
+            Swal.fire('Borar', 'Borrado', 'info');
 
-        }).catch((error)=>{
-            Swal.fire('Error','No Borrado','error');
+        }).catch((error) => {
+            Swal.fire('Error', 'No Borrado', 'error');
 
         });
-
-             
-      
-        // this.viewModulo();
-
-
     }
 
     MuestraError() {
@@ -214,7 +208,7 @@ export class ModuloService {
             numerodemodulo: 0,
             descripcion: "",
             uid: "",
-            estado:false,
+            estado: false,
         };
         const leer = this.db.collection('modulo').doc(id).get().toPromise();
         leer.then(res => {
@@ -227,9 +221,7 @@ export class ModuloService {
             this.resultado.tamano = array.tamano;
             this.resultado.descripcion = array.descripcion;
             this.resultado.estado = array.estado;
-
-            var url = `${this.imgApi}${array.image}?alt=media&token=${array.tokenImage}`;
-            this.resultado.image =url ;
+            this.resultado.image = array.imageLink;
 
         }).catch((error) => {
             console.error(error);
@@ -252,14 +244,14 @@ export class ModuloService {
         })
             .then(() => {
                 console.log("Actualizar los Datos", ActDatos);
-               this.resultado = {
+                this.resultado = {
                     nombre: "",
                     tamano: "",
                     precio: 0,
                     numerodemodulo: 0,
                     descripcion: "",
                     uid: "",
-                    estado:false,
+                    estado: false,
                 };
                 this.arreglo = [];
                 this.router.navigateByUrl("/lista");
@@ -273,20 +265,18 @@ export class ModuloService {
 
     }
 
-    load(){
-this.itemCollection = this.firestore.collection<Modulos>('modulo', query => query.orderBy('numeroModulo','desc'));
-return this.itemCollection.valueChanges()
-.pipe(map((modulo: Modulos[] ) =>
-{
-    console.log(modulo, 'load');
-    this.arreglo = [];
-for(let modelo of modulo){
-this.arreglo.unshift(modelo);
-}
-return this.arreglo;
-    
-}))    
-}
-  
+    load() {
+        this.itemCollection = this.db.collection<Modulos>('modulo', query => query.orderBy('numeroModulo', 'desc'));
+        return this.itemCollection.valueChanges()
+            .pipe(map((modulo: Modulos[]) => {
+                console.log(modulo, 'load');
+                this.arreglo = [];
+                for (let modelo of modulo) {
+                    this.arreglo.unshift(modelo);
+                }
+                return this.arreglo;
+
+            }))
+    }
 
 }

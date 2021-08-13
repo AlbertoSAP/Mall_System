@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/Service/Auth.services';
 import { ModuloService } from 'src/app/Service/modulo.service';
 
 @Component({
@@ -9,7 +10,9 @@ import { ModuloService } from 'src/app/Service/modulo.service';
 })
 export class DescripcionComponent implements OnInit {
   descrip : any={};
-  constructor(private activateRout: ActivatedRoute,
+  size:number=300;
+  constructor(public auth : AuthService ,
+    private activateRout: ActivatedRoute,
     private service : ModuloService ) { 
     
           }

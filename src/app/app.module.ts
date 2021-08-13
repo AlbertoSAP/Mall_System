@@ -17,14 +17,13 @@ import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationComponent } from './componet/notification/notification.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { ModuloComponent } from './componet/modulo/modulo.component';
 import { ListamoduloComponent } from './componet/listamodulo/listamodulo.component';
-import {MatTableModule } from '@angular/material/table';
 import { DescripcionComponent } from './componet/descripcion/descripcion.component';
-import {MatButtonModule} from '@angular/material/button';
 import { MaterialModule } from './material/material.module';
-
+import { AngularFireStorageModule} from '@angular/fire/storage';
+import { HomeComponent } from './public/home/home.component';
+import {AlquilerComponent } from './componet/Alquiler/Alquiler.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +36,9 @@ import { MaterialModule } from './material/material.module';
     ModuloComponent,
     ListamoduloComponent,
     DescripcionComponent,
+    HomeComponent,
+    AlquilerComponent
+    
   
     
 
@@ -51,7 +53,10 @@ import { MaterialModule } from './material/material.module';
     MatSliderModule,
     BrowserAnimationsModule,
     AngularFirestoreModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireStorageModule,
+    
+  
  
     
   ],

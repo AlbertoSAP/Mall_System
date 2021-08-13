@@ -44,11 +44,30 @@
 
                 </div>
                 <!-- segunada fila -->
+
+                <!-- tercera Fila
+ -->
+
+                <div class=" form-group row ">
+                    <div class="col-sm-4 ">
+                        <label>Subir Imagen</label>
+                        <input class="btn btn-square" name="image" (change)="subirArchivo($event)" [(ngModel)]="image " type="file">
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        <img style="width: 150px;" [src]="modulo.datos.links" class="img-fluid">
+                    </div>
+                </div>
+
                 <div class=" form-group ">
                     <label>Descripcion</label>
                     <textarea type="text " required placehoolder="Escriba el Nombre " class="form-control " name="descripcion " [(ngModel)]="doc.descripcion "></textarea>
 
                 </div>
+
+
+
+
 
 
                 <button [disabled]="!forma.valid" *ngIf="agregar " (click)="add() " class="btn btn-outline-primary mx-sm-1 "><a class=" material-icons ">done_all</a>Agregar</button>
