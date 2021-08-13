@@ -26,28 +26,25 @@ export class ListamoduloComponent implements OnInit {
   constructor(public moduloServices: ModuloService
               ) {
               // this.arreglo = this.moduloServices.arreglo;
-              this.moduloServices.viewModulo2().subscribe(()=>{
-                
-              });
-
+            
+   
               }
 
    ngOnInit() {
   
-  this.leer();
+    this.leer();
   }
 
   leer(){
-//  this.moduloServices.viewModulo();
-// this.arreglo = this.moduloServices.viewModulo();
-// this.arreglo = this.moduloServices.viewModulo2();      
-//  console.log(this.arreglo,"desde ts listado");
-
+    this.moduloServices.viewModulo2()
+    .subscribe(()=>{
+      
+    });
  
    }
-delete(id : any)
+delete(id : any, path:any)
    {
-this.moduloServices.delete(id);
+this.moduloServices.delete(id, path);
 console.log( id, "hi");
 this.ngOnInit();
    }

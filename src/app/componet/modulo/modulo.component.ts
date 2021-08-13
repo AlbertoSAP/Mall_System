@@ -47,6 +47,7 @@ id:any = "";
 
   add(){
     this.doc.image = this.modulo.datos.links;
+    this.doc.path = this.modulo.datos.path;
       this.modulo.addfile(this.doc);
   }
 
@@ -76,8 +77,9 @@ this.modulo.Actualizar(this.doc);
         const path = "imagenes";
         const name ="imag"+result;
         const file = event.target.files[0];
-        const link:any = this.modulo.subirimagen(file,path,name);
-        this.doc.image = link;
+        const links:any = this.modulo.subirimagen(file,path,name);
+        this.doc.image = links;
+        this.doc.path = this.modulo.datos.path
         console.log(this.doc.image, 'imagen cargada');
         
  // console.log(event.target.files[0]);

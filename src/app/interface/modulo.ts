@@ -7,5 +7,6 @@ export interface Modulos{
     uid?: string;
     estado?:boolean;
     image?:string;
+    path?:string;
 
 }

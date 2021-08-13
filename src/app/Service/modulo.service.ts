@@ -5,7 +5,6 @@ import { Modulos } from '../interface/modulo';
 import { NotificationService } from './notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import * as firebase from 'firebase';
 import Swal from 'sweetalert2';
 import { map } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -29,7 +28,7 @@ export class ModuloService {
         uid: "",
         image:""
     };
-    datos = { name: "", links:"" };
+    datos = { name: "", links:"", path:"" };
     private itemCollection!: AngularFirestoreCollection<Modulos>;
 
     constructor(private db: AngularFirestore,
@@ -39,7 +38,7 @@ export class ModuloService {
         private storage: AngularFireStorage
 
     ) {
-        //   this.viewModulo2();
+        
     }
 
     subirimagen(file: any, path: string, nombre: string) {
@@ -49,8 +48,9 @@ export class ModuloService {
         tarea.then((res) => {
             this.datos.name = res.ref.name;
             console.log(res.ref.name);
-            const url = path+'/'+res.ref.name;
-            this.link(url);
+            this.datos.path = path+'/'+res.ref.name;
+            
+            this.link(this.datos.path);
             // this.datos.token = res.ref
             console.log(res);
         }).catch((error)=>{console.log(error);
@@ -63,6 +63,7 @@ link(path:string)
     this.storage.ref(path).getDownloadURL().subscribe(resp =>{
         console.log(resp, 'link');
         this.datos.links = resp;
+        
         
     })
 }
@@ -77,7 +78,8 @@ link(path:string)
             "descripcion": documento.descripcion,
             "tamano": documento.tamano,
             "estado": documento.estado,
-            "imageLink": documento.image
+            "imageLink": documento.image,
+            "pathImagen": documento.path
 
         }).then(() => {
             Swal.fire('Ok', 'Se ha Guardado con Exito', "info");
@@ -146,7 +148,7 @@ link(path:string)
 
     }
     //********************************************************************************************************************
-    //                                lectura asap
+    //                                lectura
     // *******************************************************************************************************************
     viewModulo2() {
         // variable para fusionar resultado
@@ -171,25 +173,35 @@ Swal.fire('Vacio', 'No existe elemetos que mostrar', 'warning')
                 resultado1.descripcion = a.descripcion;
                 resultado1.estado = a.estado;
                 resultado1.image = a.imageLink;
+                resultado1.path= a.pathImagen;
                 this.arreglo.push(resultado1);
                 this.arreglo.sort((a: any, b: any) => a.numerodemodulo - b.numerodemodulo);
                 resultado1 = {};
 
             }
+        console.log(this.arreglo,"servicio delete");
+        
             return this.arreglo;
            
         })));
     }
 
 
-    delete(id: string) {
+    delete(id: string, path:string) {
         var Ref = this.db.collection('modulo').doc(id).delete().then(res => {
             Swal.fire('Borar', 'Borrado', 'info');
-
+            this.router.navigateByUrl('/lista');
         }).catch((error) => {
             Swal.fire('Error', 'No Borrado', 'error');
 
         });
+
+        this.storage.ref(path).delete()
+        .subscribe(resp =>{
+            console.log(resp);
+            
+        })
+
     }
 
     MuestraError() {
@@ -222,6 +234,7 @@ Swal.fire('Vacio', 'No existe elemetos que mostrar', 'warning')
             this.resultado.descripcion = array.descripcion;
             this.resultado.estado = array.estado;
             this.resultado.image = array.imageLink;
+            this.resultado.path = array.pathImagen;
 
         }).catch((error) => {
             console.error(error);
@@ -233,7 +246,6 @@ Swal.fire('Vacio', 'No existe elemetos que mostrar', 'warning')
 
         var ActDatos = this.db.collection('modulo').doc(argumento.uid);
 
-        // Set the "capital" field of the city 'DC'
         return ActDatos.update({
             numeroModulo: argumento.numerodemodulo,
             nombreLocal: argumento.nombre,

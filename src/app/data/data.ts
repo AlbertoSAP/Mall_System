@@ -7,4 +7,5 @@ export class Datainf {
     uid?: string = "";
     estado?:boolean;
     image?:string = "";
+    path?:string="";
   }
