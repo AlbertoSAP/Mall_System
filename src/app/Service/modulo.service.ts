@@ -15,7 +15,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
     providedIn: 'root'
 })
 export class ModuloService {
-    imgApi: string = "https://firebasestorage.googleapis.com/v0/b/mallsystem.appspot.com/o/imagenes%2F";
+    // imgApi: string = "https://firebasestorage.googleapis.com/v0/b/mallsystem.appspot.com/o/imagenes%2F";
     arreglo: Modulos[] = [];
     sms: string = '';
     cod: string = '';
@@ -82,7 +82,7 @@ link(path:string)
             "pathImagen": documento.path
 
         }).then(() => {
-            Swal.fire('Ok', 'Se ha Guardado con Exito', "info");
+            Swal.fire('Ok', 'Se ha Guardado con Exito', "success");
             this.arreglo = [];
             this.router.navigate(['/lista']);
             this.datos.links="";
@@ -223,7 +223,7 @@ Swal.fire('Vacio', 'No existe elemetos que mostrar', 'warning')
             estado: false,
         };
         const leer = this.db.collection('modulo').doc(id).get().toPromise();
-        leer.then(res => {
+       return leer.then(res => {
             let array: any;
             array = res.data();
             this.resultado.uid = res.id;
@@ -235,11 +235,11 @@ Swal.fire('Vacio', 'No existe elemetos que mostrar', 'warning')
             this.resultado.estado = array.estado;
             this.resultado.image = array.imageLink;
             this.resultado.path = array.pathImagen;
-
+            return this.resultado;
         }).catch((error) => {
             console.error(error);
         });
-        return this.resultado;
+        
     }
 
     Actualizar(argumento: Modulos) {

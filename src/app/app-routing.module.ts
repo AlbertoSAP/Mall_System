@@ -7,6 +7,7 @@ import { AuthGuard } from './guardian/auth.guard';
 import { LoginGuard } from './guardian/login.guard';
 import { HomeComponent } from './public/home/home.component';
 import { DescripcionComponent } from './componet/descripcion/descripcion.component';
+import { AlquilerComponent } from './componet/Alquiler/Alquiler.component';
 
 
 
@@ -14,7 +15,8 @@ const routes: Routes = [
    { path: '', component: HomeComponent },
   // { path: 'Login', component: LoginComponent},
   { path: 'Register', component: RegisterComponent },
-  {path: 'descripcion/:busque', component: DescripcionComponent}
+  {path: 'descripcion/:busque', component: DescripcionComponent},
+  {path: 'alquiler/:id', component: AlquilerComponent}
 
   // { path: 'path4', component: Name4Component },
   // { path: '**', component: PageNotFoundComponent },

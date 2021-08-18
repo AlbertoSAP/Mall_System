@@ -21,7 +21,9 @@ export class DescripcionComponent implements OnInit {
       {
               console.log( parametro.busque,"descrip");
   
-              this.descrip = this.service.leeruno(parametro.busque);
+              this.service.leeruno(parametro.busque).then(resp=>{
+                this.descrip = resp;
+              })
               console.log(this.descrip);
               
              })

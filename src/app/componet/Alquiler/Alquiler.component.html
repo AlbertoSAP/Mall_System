@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="container col-12 fondo card ">
+        <div class="card-header">
+            <h2 class="center-mytext">
+                Agregar Modulos
+            </h2>
+
+        </div>
+
+        <div class="card-body">
+
+            <form #form="ngForm" novalidate>
+
+                <div class="form-group ">
+
+                    <label>Nombre del Cliente</label>
+                    <input required type="text " placehoolder="Escribe el Nombre" name="nombre " [(ngModel)]="doc.Clientnomb" class="form-control">
+                </div>
+
+
+                <div class="form-group row ">
+                    <div class="col-sm-4 ">
+                        <label>Numero de Modulo</label>
+                        <input disabled="true" required type="number " name="N#modulo" class="form-control" [(ngModel)]="doc.numeromodulo">
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        <label>Precio Modulo</label>
+                        <input disabled="true" required type="number " class="form-control" name="precio" [(ngModel)]="doc.precio">
+                    </div>
+
+                    <div class="form-check col">
+                        <label class="form-check-label"> Estado</label>
+                        <input disabled="true" required class="form-check-input" type="checkbox" name="estado" [(ngModel)]="doc.estado">
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row ">
+                    <div class="col-sm-4 ">
+                        <label>Fecha de Inicio</label>
+                        <input required type="date" class="form-control" name="inicio" [(ngModel)]="doc.fechaIni">
+
+                    </div>
+                    <div class="col-sm-4 ">
+                        <label>Fecha de Fin</label>
+                        <input required type="date" class="form-control" name="fin" [(ngModel)]="doc.fechafin">
+
+                    </div>
+                </div>
+
+                <div class="form-group row ">
+                    <div class="col-sm-4">
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Tipo de Transacción</mat-label>
+                            <mat-select #select (selectionChange)="selector(select.value)">
+
+                                <mat-option *ngFor="let dat of selected" [value]="dat.name" [(ngModel)]="dat.name">{{dat.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-control" *ngIf="tarjetas">
+                    <div class="form-group row ">
+                        <div class="col-sm-8 ">
+                            <label>Nombre del Titular</label>
+                            <input required type="text " placehoolder="Escriba su nombre" class="form-control" name="titular" [value]="doc.Clientnomb">
+                        </div>
+                    </div>
+                    <div class="form-group row ">
+                        <div class="col-sm-4 ">
+                            <label>N° de Tarjeta</label>
+                            <input required type="text " placehoolder="Dijite su numero" class="form-control" name="ntarjeta" [(ngModel)]="doc.numerotarjeta">
+                        </div>
+
+                        <div class="col-sm-4 ">
+                            <label>Fecha de expiración</label>
+                            <input required type="date" class="form-control" name="inicio" [(ngModel)]="doc.fechaexp">
+
+                        </div>
+                        <div class="col-sm-4 ">
+
+                            <label>Codigo de Seguridad</label>
+                            <input required type="number" class="form-control" name="seguridadNum" [(ngModel)]="doc.codigo">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+
+                <div class="form-control" *ngIf="contado">
+                    <div class="form-group row ">
+
+                        <div class="col-sm-10">
+                            <label>Direccion de la Oficina</label>
+                            <input required type="text " disabled="true" [(ngModel)]="Direccion" class="form-control" name="direccion">
+                        </div>
+
+                        <div class="col-sm-4  ">
+                            <label>Hoario de Atencion</label>
+                            <input type="text" class="form-control" name="horario" value="8:00 am - 5:00pm" disabled="true">
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <button (click)="Add()" [disabled]="!form.valid" class="btn btn-outline-primary mx-sm-1 "><a class=" material-icons ">done_all</a>Alquilar</button>
+                </div>
+
+            </form>
+        </div>
+
+
+
+
+    </div>
+</div>
