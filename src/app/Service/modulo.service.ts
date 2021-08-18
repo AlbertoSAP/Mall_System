@@ -5,9 +5,13 @@ import { Modulos } from '../interface/modulo';
 import { NotificationService } from './notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+
+
 import { map } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
+
+import { Datainf } from '../data/data';
+import Swal from 'sweetalert2';
 
 
 
@@ -82,15 +86,15 @@ link(path:string)
             "pathImagen": documento.path
 
         }).then(() => {
-            Swal.fire('Ok', 'Se ha Guardado con Exito', "success");
+
+            Swal.fire('Ok...', 'Se Guardo!', 'success')
+ 
             this.arreglo = [];
             this.router.navigate(['/lista']);
             this.datos.links="";
             this.datos.name="";
         }).catch((error) => {
-            this.cod = 'Error';
-            this.notificacion.eror(this.cod);
-            this.MuestraError();
+            Swal.fire('Oops...', 'Sucedio un Error!', 'error')
         });
 
 

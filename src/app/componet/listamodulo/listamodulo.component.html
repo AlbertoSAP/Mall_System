@@ -33,9 +33,9 @@
                     <th>
                         <div role="group">
                             <!-- <a class="btn btn-outline-primary" [routerLink]="[ '/modulo']">Editar</a> -->
-                            <button class="redondo btn btn-outline-primary mx-sm-1" [routerLink]="['/modulo',data.uid]">Modificar</button>
-                            <button class="redondo btn btn-outline-danger  mx-sm-1" (click)="delete(data.uid, data.path)">Borrar</button>
-                            <button class="redondo btn btn-outline-warning  mx-sm-1" [routerLink]="['/descripcion',data.uid]">Ver</button>
+                            <button class="redondo btn btn-outline-primary mx-sm-1" (click)="actualizar(data.uid)">Modificar</button>
+                            <button class="redondo btn btn-outline-danger  mx-sm-1" (click)="delete(data.uid)">Borrar</button>
+                            <button class="redondo btn btn-outline-warning  mx-sm-1" [routerLink]="[ '/descripcion/data.uid']">Ver</button>
                         </div>
                     </th>
 
