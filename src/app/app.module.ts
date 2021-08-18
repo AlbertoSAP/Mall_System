@@ -14,7 +14,7 @@ import { HeaderComponent } from './componet/header/header.component';
 import { NavbarComponent } from './componet/navbar/navbar.component';
 import { RoutingModule } from './app-routing.module';
 import { MatSliderModule } from '@angular/material/slider';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationComponent } from './componet/notification/notification.component';
 import { ModuloComponent } from './componet/modulo/modulo.component';
@@ -24,6 +24,7 @@ import { MaterialModule } from './material/material.module';
 import { AngularFireStorageModule} from '@angular/fire/storage';
 import { HomeComponent } from './public/home/home.component';
 import {AlquilerComponent } from './componet/Alquiler/Alquiler.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {AlquilerComponent } from './componet/Alquiler/Alquiler.component';
     AngularFirestoreModule,
     MaterialModule,
     AngularFireStorageModule,
-    
+    MatSelectModule,
+ 
   
  
     

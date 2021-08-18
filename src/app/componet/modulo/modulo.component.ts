@@ -38,7 +38,9 @@ id:any = "";
       else{
       this.actualizar = true;
       this.agregar = false;
-      this.doc = this.modulo.leeruno(parametro.id);
+      this.modulo.leeruno(parametro.id).then((resp:any) =>{
+        this.doc = resp;
+      })
       console.log(this.doc);
     }
     });

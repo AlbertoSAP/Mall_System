@@ -16,7 +16,7 @@ const routes: Routes = [
   
     { path: 'modulo/:id', component: ModuloComponent, canActivate:[AuthGuard], },
     { path: 'lista', component:  ListamoduloComponent,  canActivate:[AuthGuard],},
-    {path: 'alquiler', component: AlquilerComponent,canActivate:[AuthGuard],}
+
     //{ path: 'path/:routeParam', component: MyComponent },
     //{ path: 'staticPath', component: ... },
     //{ path: '**', component: ... },

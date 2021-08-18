@@ -19,7 +19,7 @@
                     <button *ngIf="auth.estado" [routerLink]="['/lista']" class="btn btn-outline-secondary">Inicio</button>
                     <button *ngIf="!auth.estado" [routerLink]="['']" class="btn btn-outline-secondary">Inicio</button>
                     <button class="btn btn-outline-info" (click)="size = size+20">Zoom img</button>
-                    <button class="btn btn-outline-primary">Alquilar</button>
+                    <button class="btn btn-outline-primary" [routerLink]="['/alquiler',descrip.uid]">Alquilar</button>
                 </div>
                 <div class="col-md-6">
                     <h1>Nombre del Local: {{descrip.nombre}} </h1>
