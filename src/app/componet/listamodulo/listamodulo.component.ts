@@ -48,7 +48,7 @@ this.moduloServices.delete(id, path);
 console.log( id, "hi");
 this.ngOnInit();
    }
-actualizar(id : string){
+actualizar(id : any){
     this.moduloServices.leeruno(id);
    }
 }
