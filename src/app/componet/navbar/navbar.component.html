@@ -5,16 +5,18 @@
             <a class="mobile-menu" id="mobile-collapse">
                 <i class="ti-menu"></i>
             </a>
+
             <a class="mobile-search morphsearch-search" href="#">
                 <i class="ti-search"></i>
             </a>
             <a href="index.html">
-                <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+                <img class="img-fluid" src="assets/edificio6.png" width="90px" height="85px" />
             </a>
             <a class="mobile-options">
                 <i class="ti-more"></i>
             </a>
         </div>
+
 
         <div class="navbar-container container-fluid">
             <ul class="nav-left">
@@ -27,6 +29,11 @@
                         <i class="ti-fullscreen"></i>
                     </a>
                 </li>
+                <!-- <li>
+                    <a>
+                        <img src="assets/mallsystem1.png" width="190px" height="70px">
+                    </a>
+                </li> -->
             </ul>
             <ul class="nav-right">
                 <li *ngIf="auth.estado" class="header-notification">
@@ -39,6 +46,7 @@
                             <h6>Notifications</h6>
                             <label class="label label-danger">New</label>
                         </li>
+
                         <li>
                             <div class="media">
                                 <img class="d-flex align-self-center img-radius" src="assets/images/avatar-4.jpg" alt="Generic placeholder image">
@@ -50,6 +58,7 @@
                             </div>
                         </li>
                         <li>
+
                             <div class="media">
                                 <img class="d-flex align-self-center img-radius" src="assets/images/avatar-3.jpg" alt="Generic placeholder image">
                                 <div class="media-body">
@@ -98,7 +107,9 @@
                                 <i class="ti-lock"></i> Lock Screen
                             </a>
                         </li>
+
                         <li>
+
                             <a *ngIf="auth.estado" type="button" class="btn btn-outline-light" (click)="salir()">
                                 <i class="ti-layout-sidebar-left"></i> Logout
                             </a>
