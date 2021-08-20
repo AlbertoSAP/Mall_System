@@ -14,6 +14,8 @@ export class AppComponent {
 estado:boolean= false;
   constructor(private db : AngularFirestore,
     public auth: AuthService) {
+      
+      
   
     }
 }

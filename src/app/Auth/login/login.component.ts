@@ -15,12 +15,12 @@ export class LoginComponent implements OnInit {
      password:'',
   }
 
-  constructor(private service: AuthService) {
-  
+  constructor(public service: AuthService) {
+    this.service.loginOk = false;
    }
 
   ngOnInit(): void {
-    
+   
   }
   Login(){
 this.service.login(this.user);

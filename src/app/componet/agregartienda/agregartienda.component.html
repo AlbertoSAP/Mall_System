@@ -1,0 +1,140 @@
+<div class="container">
+    <div class="container col-12 fondo card ">
+        <div class="card-header">
+            <h1 style="font-family: fantasy;" class="center-mytext">
+                Agregar Tienda
+            </h1>
+            <hr>
+        </div>
+
+        <div class="card-body">
+
+
+            <form #forma="ngForm" novalidate>
+                <!-- primera fila -->
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label>Nombre de la Tienda</label>
+                        <input required type="text " placeholder="Nombre Tienda" name="nombre " [(ngModel)]="doc.nombreTienda" class="form-control ">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label>Nombre del Propietario </label>
+                        <input required type="text " placeholder="Nombre Propietario" name="propietario " [(ngModel)]="doc.nombrePropietario" class="form-control ">
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label>Ubicacion de la Tienda</label>
+
+                    <input required type="text " placeholder="Modulo N#000 ubicado en" name="Telfonos " [(ngModel)]="doc.ubicacionTienda" class="form-control ">
+
+
+                </div>
+                <!-- primera fila -->
+
+                <!-- segunada fila -->
+                <div class="form-group row ">
+                    <div class="col-sm-4 ">
+                        <label>Correo</label>
+                        <input required type="text " placeholder="nombre@gmail.com" class="form-control" [(ngModel)]="doc.correo" name="Correo">
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        <label>Telfonos</label>
+                        <input required type="text " placeholder="00505458935" class="form-control" [(ngModel)]="doc.telf" name="telefon">
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        <label>Horario de Atencion</label>
+                        <input required type="text " placeholder="9 am - 8 pm " class="form-control" [(ngModel)]="doc.horario" name="horario">
+                    </div>
+
+                </div>
+                <!-- segunada fila -->
+
+                <!-- tercera Fila-->
+                <h3>Subir Imagenes</h3>
+                <div class=" form-group row ">
+
+                    <div class="col-sm-6 ">
+                        <label>Imagen de Portada</label>
+                        <input class="btn btn-outline-primary" type="file" (change)="subirimg($event,'Portada')" name="image">
+                    </div>
+
+                    <div class="col-sm-6 ">
+                        <label>Logo de la Empresa</label>
+                        <input class="btn btn-outline-primary" (change)="subirimg($event,'Logo')" type="file" name="logo">
+                    </div>
+                </div>
+                <!--fin tercera Fila-->
+
+
+                <!-- cuarta fila imagenes -->
+
+                <div class=" form-group row ">
+
+                    <div *ngIf="tienda.portada" class="col-sm-6 ">
+                        <div class="col-md-3">
+                            <div class="card" style="width: 200px;">
+                                <img class="card-img-top" [src]="tienda.portada" alt="Card image cap" width="100px" height="100">
+                                <div class="card-body">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="tienda.logo" class="col-sm-6 ">
+                        <div class="col-md-3">
+                            <div class="card" style="width: 200px;">
+                                <img class="card-img-top" [src]="tienda.logo" alt="Card image cap" width="100px" height="100">
+                                <div class="card-body">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- cuarta fila imagenes -->
+
+
+                <div class=" form-group ">
+                    <label>Descripcion</label>
+                    <textarea type="text " required placehoolder="Escriba el Nombre " class="form-control " name="descripcion "></textarea>
+
+                </div>
+
+                <div class="carrd col-ms-12">
+                    <h2>Agrege las Imagenes que desea Mostrar</h2>
+                    <div class="form-group row">
+                        <div class=" card col-ms-3">
+                            <label></label>
+                            <input class="btn btn-outline-warning" (change)="subirimg($event,'Coleccion')" type="file" alt="">
+                        </div>
+                    </div>
+
+                    <div class="container col-md-12">
+
+                        <div class="row">
+
+                            <div class="col-md-3" *ngFor="let dts of tienda.Urls">
+                                <div class="card" style="width: 200px;">
+                                    <img class="card-img-top" [src]="dts" alt="Card image cap" width="100px" height="100">
+                                    <div class="card-body">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <!-- <button [disabled]="!forma.valid" class="btn btn-outline-primary mx-sm-1 "><a class=" material-icons ">done_all</a>Agregar</button> -->
+                <button class="btn btn-outline-warning"><a class=" material-icons ">change_circle</a>Actualizar</button>
+                <button class="btn btn-outline-danger "> <a class=" material-icons ">delete_sweep</a> Limpiar</button>
+
+            </form>
+        </div>
+    </div>
+</div>
