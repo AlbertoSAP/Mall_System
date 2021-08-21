@@ -9,5 +9,5 @@ export interface Tienda {
     descripcion:string;
     imgPortada:string;
     imgLogo:string;
-    imagprod:[];
+    imagprod:any[];
 }

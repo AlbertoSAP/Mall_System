@@ -41,8 +41,17 @@ imagenlogo:string="";
 //        console.log(this.doc.image, 'imagen cargada');
        
 //  console.log(event.target.files[0]);
+  }
 
+  agregartienda(){
+    this.doc.imagprod= this.tienda.Urls;
+    this.doc.imgLogo =this.tienda.logo;
+    this.doc.imgPortada = this.tienda.portada;
+    this.doc.Key$ = this.doc.nombreTienda;
+    this.tienda.addtienda(this.doc);
 
+    console.log(this.doc);
+    
   }
 
 }
