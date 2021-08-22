@@ -8,6 +8,7 @@ import { LoginGuard } from './guardian/login.guard';
 import { HomeComponent } from './public/home/home.component';
 import { DescripcionComponent } from './componet/descripcion/descripcion.component';
 import { AlquilerComponent } from './componet/Alquiler/Alquiler.component';
+import { VistaTiendaComponent } from './componet/vista-tienda/vista-tienda.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   // { path: 'Login', component: LoginComponent},
   { path: 'Register', component: RegisterComponent },
   {path: 'descripcion/:busque', component: DescripcionComponent},
-  {path: 'alquiler/:id', component: AlquilerComponent}
+  {path: 'alquiler/:id', component: AlquilerComponent},
+  {path: 'vistaTienda', component:VistaTiendaComponent}
 
   // { path: 'path4', component: Name4Component },
   // { path: '**', component: PageNotFoundComponent },
