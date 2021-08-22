@@ -25,7 +25,12 @@ import { AngularFireStorageModule} from '@angular/fire/storage';
 import { HomeComponent } from './public/home/home.component';
 import {AlquilerComponent } from './componet/Alquiler/Alquiler.component';
 import {MatSelectModule} from '@angular/material/select';
+
 import { VistaTiendaComponent } from './componet/vista-tienda/vista-tienda.component';
+import { TiendasComponent } from './public/tiendas/tiendas.component';
+import { TiendaComponent } from './public/tienda/tienda.component';
+import { AgregartiendaComponent } from './componet/agregartienda/agregartienda.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,14 @@ import { VistaTiendaComponent } from './componet/vista-tienda/vista-tienda.compo
     DescripcionComponent,
     HomeComponent,
     AlquilerComponent,
+
     VistaTiendaComponent
+,
+    TiendasComponent,
+    TiendaComponent,
+    AgregartiendaComponent
+   
+
     
   
     

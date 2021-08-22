@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
     providedIn: 'root'
 })
 export class AuthService {
+    loginOk:boolean=true;
     usuario: any = {};
     cod: string = "";
     estado: boolean = true;
@@ -33,11 +34,13 @@ export class AuthService {
                 this.estado = false
                 return;
 
-            }
+            }else{
             this.usuario.nombre = user.displayName;
             this.usuario.uid = user.uid;
             this.usuario.foto = user.photoURL;
-            this.estado = true;
+            this.estado = true;   
+            
+        }
 
         })
 
@@ -60,6 +63,10 @@ export class AuthService {
 
               this.mathdialogo.closeAll();
               this.router.navigateByUrl('/lista');
+              setTimeout(() => {
+                location.reload();
+            }, 8);
+             
 
             })
             .catch((error) => {
@@ -106,7 +113,6 @@ export class AuthService {
             .then((result) => {
                 var credential: any = result.credential;
                 console.log(result);
-                this.router.navigateByUrl('/lista')
                 // The signed-in user info.
                 var user: any = result.user;
                 this.mathdialogo.closeAll();
@@ -114,6 +120,12 @@ export class AuthService {
                 var accessToken = credential.accessToken;
                 localStorage.setItem('user', user?.displayName);
                 localStorage.setItem('token', accessToken);
+                this.router.navigateByUrl('/lista'); 
+              
+                setTimeout(() => {
+                    location.reload();
+                }, 10);
+               
 
                 // ...
             })

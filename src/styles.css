@@ -17,3 +17,12 @@ body {
 .check {
     margin: 0 12px;
 }
+
+input[type=checkbox] {
+    width: 25px;
+    height: 25px;
+    -moz-appearance: none;
+    position: relative;
+    top: 28px;
+    right: 10px;
+}

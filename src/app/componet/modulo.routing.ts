@@ -5,6 +5,7 @@ import { ListamoduloComponent} from '../componet/listamodulo/listamodulo.compone
 import { DescripcionComponent} from '../componet/descripcion/descripcion.component';
 import { AuthGuard } from '../guardian/auth.guard';
 import { AlquilerComponent } from './Alquiler/Alquiler.component';
+import { AgregartiendaComponent } from './agregartienda/agregartienda.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   
     { path: 'modulo/:id', component: ModuloComponent, canActivate:[AuthGuard], },
     { path: 'lista', component:  ListamoduloComponent,  canActivate:[AuthGuard],},
+    { path: 'Agregar-Tienda', component:  AgregartiendaComponent,  canActivate:[AuthGuard],},
 
     //{ path: 'path/:routeParam', component: MyComponent },
     //{ path: 'staticPath', component: ... },
