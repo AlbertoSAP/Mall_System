@@ -25,6 +25,7 @@ import { AngularFireStorageModule} from '@angular/fire/storage';
 import { HomeComponent } from './public/home/home.component';
 import {AlquilerComponent } from './componet/Alquiler/Alquiler.component';
 import {MatSelectModule} from '@angular/material/select';
+import { VistaTiendaComponent } from './componet/vista-tienda/vista-tienda.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatSelectModule} from '@angular/material/select';
     ListamoduloComponent,
     DescripcionComponent,
     HomeComponent,
-    AlquilerComponent
+    AlquilerComponent,
+    VistaTiendaComponent
     
   
     
