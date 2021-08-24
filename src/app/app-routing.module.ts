@@ -9,6 +9,7 @@ import { HomeComponent } from './public/home/home.component';
 import { DescripcionComponent } from './componet/descripcion/descripcion.component';
 import { AlquilerComponent } from './componet/Alquiler/Alquiler.component';
 import { VistaTiendaComponent } from './componet/vista-tienda/vista-tienda.component';
+import { TiendasComponent } from './public/tiendas/tiendas.component';
 
 
 
@@ -18,7 +19,9 @@ const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   {path: 'descripcion/:busque', component: DescripcionComponent},
   {path: 'alquiler/:id', component: AlquilerComponent},
-  {path: 'vistaTienda', component:VistaTiendaComponent}
+  {path: 'vistaTienda', component:VistaTiendaComponent},
+  {path: 'tiendas/:id', component:TiendasComponent},
+
 
   // { path: 'path4', component: Name4Component },
   // { path: '**', component: PageNotFoundComponent },

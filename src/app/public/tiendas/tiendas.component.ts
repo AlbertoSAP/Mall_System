@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TiendaService } from '../../Service/tienda.service';
 
 @Component({
   selector: 'app-tiendas',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TiendasComponent implements OnInit {
 
-  constructor() { }
+  arreglo:any =[];
+  constructor( public tiendasService: TiendaService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+
+   this.tiendasService.leerTodo().then(resp=>{
+     this.arreglo=resp;
+   });
   }
+
+  
 
 }

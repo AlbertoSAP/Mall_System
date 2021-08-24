@@ -6,6 +6,9 @@
     /* overflow: hidden; */
     width: 200px;
     height: 200px;
+    position: relative;
+    top: -170px;
+    left: 9px;
 }
 
 
@@ -16,7 +19,12 @@
     background-image: url(../../../assets/images/fondo.jpg);
 } */
 
-.user-name {
-    font-size: 18px;
-    margin-top: 14px;
+.portada {
+    height: 200px;
+    width: auto;
+}
+
+.cont-center {
+    width: 900px;
+    height: 300px;
 }
