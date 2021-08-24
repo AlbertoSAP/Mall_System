@@ -1,36 +1,96 @@
 <div>
-
-    <div [ngStyle]="estilo">
-        <div class="redondo">
-            <img class="img" src="../../../assets/images/avatar-3.jpg">
-            <h1 class="user-name">NombreEmprea</h1>
-        </div>
+    <!-- imagenes de portda y perfil -->
+    <div class="form-control">
+        <img class="portada cont-center" [src]="Array.imgPortada">
+    </div>
+    <div style="position: absolute;">
+        <img class="img" [src]="Array.imgLogo">
+        <!-- lista de item -->
     </div>
     <br>
     <br>
-    <!-- div de informacion -->
     <div>
-        <div class="form-group row">
+        <div class="form-group row responsive">
             <div class="col-sm-4">
-                <div class="card" style="width: 300px; height: 300px;">
-                    <div class="card-body">
+                <div class="card" style="width: 350px; height:auto;">
+                    <div class="card-body ">
+                        <mat-nav-list>
+                            <mat-list-item>
 
-                        <h5 class="card-title">Informacion</h5>
-                        <p class="card-text">Content</p>
+                                <h3><a class="material-icons primary">
+                                        business_center
+                                    </a> {{Array.nombreTienda}}</h3>
+
+                            </mat-list-item>
+                            <br>
+                            <mat-list-item>
+                                <h3><a class="material-icons">
+                                        person
+                                    </a> {{Array.nombrePropietario}}</h3>
+                            </mat-list-item>
+                            <br>
+                            <mat-list-item>
+                                <h3><a class="material-icons">
+                                        room
+                                    </a> {{Array.ubicacionTienda}}</h3>
+                            </mat-list-item>
+                            <br>
+
+                            <mat-list-item>
+                                <h3><a class="material-icons">
+                                        email
+                                    </a> {{Array.correo}}</h3>
+                            </mat-list-item>
+                            <br>
+                            <mat-list-item>
+                                <h3><a class="material-icons">
+                                        phone
+                                    </a> {{Array.telf}}</h3>
+
+                            </mat-list-item>
+                            <br>
+                            <mat-list-item>
+                                <h3><a class="material-icons">
+                                        schedule
+                                    </a> {{Array.horario}}</h3>
+                            </mat-list-item>
+                            <br>
+                            <mat-list-item>
+                                <h3><a class="material-icons">
+                                        description
+                                    </a> {{Array.descripcion}}</h3>
+                            </mat-list-item>
+
+
+                        </mat-nav-list>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6">
-                <div class="card" style="width: 650px; height: 300px;">
-                    <div class="card-body" src="">
+            <!-- carrusel -->
+            <div class="col-sm-8">
+                <!-- *ngFor="let dts of carrusel" -->
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="../../../assets/Ofrecemos.png" alt="First slide">
+                        </div>
+                        <div class="carousel-item " *ngFor="let dts of carrusel">
+                            <img class="d-block w-100" [src]="dts" alt="First slide" height="500px">
+                        </div>
 
-                        <h5 class="card-title">Imagenes</h5>
-                        <p class="card-text">Content</p>
                     </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
+
+
             </div>
-        </div>
-        <div>
 
         </div>
