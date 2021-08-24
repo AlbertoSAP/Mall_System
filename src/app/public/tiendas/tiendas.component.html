@@ -4,10 +4,11 @@
         <div class="col-md-4">
             <!-- *ngFor="let dts of datos" -->
             <div class="card" style="width: 300px;" *ngFor="let dts of arreglo">
-                <img class="card-img-top" [src]="dts.imgLogo" alt="Card image cap" width="350px" height="300px">
+                <a [routerLink]="['/vistaTienda',dts.Key$]"> <img class="card-img-top" [src]="dts.imgLogo" alt="Card image cap" width="350px" height="300px">
+                </a>
                 <div class="card-body">
                     <a>
-                        <p class="card-text">Local valor </p>
+                        <button class="btn btn-success form-control" [routerLink]="['/vistaTienda',dts.Key$]">ver Tienda</button>
                     </a>
 
                 </div>

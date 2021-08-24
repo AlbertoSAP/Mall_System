@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TiendaService } from '../../Service/tienda.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tiendas',
@@ -9,7 +10,8 @@ import { TiendaService } from '../../Service/tienda.service';
 export class TiendasComponent implements OnInit {
 
   arreglo:any =[];
-  constructor( public tiendasService: TiendaService) { }
+  constructor( public tiendasService: TiendaService
+    ) { }
 
   ngOnInit(): void{
 
