@@ -47,7 +47,6 @@ imagenlogo:string="";
     this.doc.imagprod= this.tienda.Urls;
     this.doc.imgLogo =this.tienda.logo;
     this.doc.imgPortada = this.tienda.portada;
-    this.doc.Key$ = this.doc.nombreTienda;
     this.tienda.addtienda(this.doc);
 
     console.log(this.doc);

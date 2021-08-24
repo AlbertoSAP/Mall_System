@@ -58,7 +58,7 @@ export class TiendaService {
 
     addtienda(doc: Tienda) {
 
-        return this.db.collection('Tiendas').doc(doc.Key$).set({
+        return this.db.collection('Tiendas').doc().set({
 
             "nombreTienda": doc.nombreTienda,
             "nombrePropietario": doc.nombrePropietario,
@@ -78,7 +78,7 @@ export class TiendaService {
         })
     }
 
-    leerTienda() {
+    leerTienda(id:string) {
         let tienda: Tienda = {
             Key$: '',
             nombreTienda: '',
@@ -92,16 +92,16 @@ export class TiendaService {
             imgLogo: '',
             imagprod: []
         };
-        const view = this.db.collection('Tiendas').get().toPromise();
+        const view = this.db.collection('Tiendas').doc(id).get().toPromise();
 
         return view.then((resp: any) => {
             console.log(resp);
 
-            const objeto = resp.docs;
-            for (let recd of objeto) {
-                let dts: Tienda = recd.data();
+               
+            
+                let dts: Tienda = resp.data();
 
-                tienda.Key$ = recd.id;
+                tienda.Key$ = resp.id;
                 tienda.nombreTienda = dts.nombreTienda;
                 tienda.nombrePropietario = dts.nombrePropietario;
                 tienda.ubicacionTienda = dts.ubicacionTienda;
@@ -112,11 +112,8 @@ export class TiendaService {
                 tienda.imgPortada = dts.imgPortada;
                 tienda.imgLogo = dts.imgLogo;
                 tienda.imagprod = dts.imagprod;
-
                 console.log(tienda);
-
-
-            }
+         
             return tienda;
         }).catch((error) => {
             console.log(error);

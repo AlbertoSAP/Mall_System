@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   {path: 'descripcion/:busque', component: DescripcionComponent},
   {path: 'alquiler/:id', component: AlquilerComponent},
-  {path: 'vistaTienda', component:VistaTiendaComponent},
-  {path: 'tiendas/:id', component:TiendasComponent},
+  {path: 'vistaTienda/:id', component:VistaTiendaComponent},
+  {path: 'tiendas', component:TiendasComponent},
 
 
   // { path: 'path4', component: Name4Component },

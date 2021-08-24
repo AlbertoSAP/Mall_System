@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TiendaService } from '../../Service/tienda.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-vista-tienda',
@@ -8,15 +9,19 @@ import { TiendaService } from '../../Service/tienda.service';
 })
 export class VistaTiendaComponent implements OnInit {
   Array:any={};
-
+id:any;
   carrusel=[];
   image:String= "";
   estilo:any={}
-  constructor(private tiendaserv: TiendaService) { }
+  constructor(private tiendaserv: TiendaService,
+              private ActivatedRoute:ActivatedRoute) {
+      
+
+               }
 
   ngOnInit(): void {
-
-    this.tiendaserv.leerTienda().then(resp =>{
+    this.ActivatedRoute.params.subscribe(res => {
+    this.tiendaserv.leerTienda(res.id).then(resp =>{
      this.Array = resp;
      this.carrusel = this.Array.imagprod;
      this.image = `url(${this.Array.imgPortada})`;
@@ -32,6 +37,9 @@ export class VistaTiendaComponent implements OnInit {
 }
     });
 console.log(this.image,"yo");
+console.log(res.id,"id");
+
+        })
 
   }
 
