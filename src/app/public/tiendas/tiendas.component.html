@@ -1,10 +1,10 @@
 <div class="container col-12 fondo card">
     <div class="row">
 
-        <div class="col-md-4">
-            <!-- *ngFor="let dts of datos" -->
-            <div class="card" style="width: 300px;" *ngFor="let dts of arreglo">
-                <a [routerLink]="['/vistaTienda',dts.Key$]"> <img class="card-img-top" [src]="dts.imgLogo" alt="Card image cap" width="350px" height="300px">
+        <div class="col-md-3" *ngFor="let dts of arreglo">
+            <div class="card" style="width:200px;">
+                <a [routerLink]="['/vistaTienda',dts.Key$]">
+                    <img class="card-img-top" [src]="dts.imgLogo" alt="Card image cap" width="250px" height="200px">
                 </a>
                 <div class="card-body">
                     <a>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Tienda } from 'src/app/interface/tienda';
 import { TiendaService } from '../../Service/tienda.service';
+import { ModuloService } from '../../Service/modulo.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregartienda',
@@ -8,9 +10,11 @@ import { TiendaService } from '../../Service/tienda.service';
   styleUrls: ['./agregartienda.component.css']
 })
 export class AgregartiendaComponent implements OnInit {
-
-  constructor(public tienda: TiendaService) { }
-doc:Tienda ={
+existe:boolean=false;
+  constructor(public tienda: TiendaService,
+    private modulo: ModuloService) { }
+ Tienda:string="";  
+ doc:Tienda ={
   nombreTienda: '',
   nombrePropietario: '',
   ubicacionTienda: '',
@@ -52,5 +56,19 @@ imagenlogo:string="";
     console.log(this.doc);
     
   }
+
+  verificar()
+ {
+   console.log('VERIFICAR');
+   
+   this.modulo.leeruno(this.Tienda).then(resp => {
+     if(resp != undefined){
+       this.existe =true;
+     }else{
+      Swal.fire('Error','Verifique su Codigo','error');
+     }
+     
+   })
+ }
 
 }

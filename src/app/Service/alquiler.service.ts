@@ -46,11 +46,11 @@ export class AlquilerService {
             "codigotarjeta": documento.codigo,
 
 
-        }).then((rep) => {
+        }).then(rep => {
             this.ActualizarBodega(doc);
             Swal.fire('Añadido', 'Se ha Guardado con Exito', "success");
-            console.log(rep);
-
+            console.log(rep,"se guardo");
+         this.cod(doc.uid,documento.Clientnomb);
         }).catch((error) => {
             console.log(error);
 
@@ -92,5 +92,12 @@ export class AlquilerService {
 
 
     }
+
+    cod(id:any, nombre:string){
+        this.db.collection('codigoAlquiler').doc().set({
+        "codigo":id,
+        "usuarioNombre":nombre,
+           });
+        }
 
 }
