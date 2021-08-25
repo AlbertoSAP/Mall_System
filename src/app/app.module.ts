@@ -30,6 +30,7 @@ import { VistaTiendaComponent } from './componet/vista-tienda/vista-tienda.compo
 import { TiendasComponent } from './public/tiendas/tiendas.component';
 import { TiendaComponent } from './public/tienda/tienda.component';
 import { AgregartiendaComponent } from './componet/agregartienda/agregartienda.component';
+import { ReportedeAlquilerComponent } from './componet/reportede-alquiler/reportede-alquiler.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AgregartiendaComponent } from './componet/agregartienda/agregartienda.c
 ,
     TiendasComponent,
     TiendaComponent,
-    AgregartiendaComponent
+    AgregartiendaComponent,
+    ReportedeAlquilerComponent
    
 
     
