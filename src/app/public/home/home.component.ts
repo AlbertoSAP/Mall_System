@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Modulos } from 'src/app/interface/modulo';
 import { ModuloService } from 'src/app/Service/modulo.service';
+import { AlquilerService } from '../../Service/alquiler.service';
+import { ReportService } from '../../Service/reporte.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,8 @@ import { ModuloService } from 'src/app/Service/modulo.service';
 })
 export class HomeComponent implements OnInit {
 datos:any=[];
-  constructor(public service: ModuloService) {
+  constructor(public service: ModuloService,
+              private reporte:ReportService) {
     this.service.viewModulo2().subscribe(()=>
     {
       this.datos = service.arreglo;
@@ -20,6 +23,7 @@ datos:any=[];
    }
 
   ngOnInit() {
+    this.reporte.Alquiler();
   }
 
 }
