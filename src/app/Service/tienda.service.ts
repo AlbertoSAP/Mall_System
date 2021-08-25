@@ -158,8 +158,21 @@ export class TiendaService {
                 tienda.imgLogo = dts.imgLogo;
                 tienda.imagprod = dts.imagprod;
 
+                
                 arreglo.push(tienda);
-
+                 tienda = {
+                    Key$: '',
+                    nombreTienda: '',
+                    nombrePropietario: '',
+                    ubicacionTienda: '',
+                    telf: '',
+                    correo: '',
+                    horario: '',
+                    descripcion: '',
+                    imgPortada: '',
+                    imgLogo: '',
+                    imagprod: []
+                };
             }
             console.log(arreglo,"tiendas");
             return arreglo;
@@ -168,6 +181,5 @@ export class TiendaService {
             console.log(error);
         });
     }
-
     }
 
